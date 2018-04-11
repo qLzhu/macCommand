@@ -44,6 +44,7 @@ MacOS终端指令
     - [获取权限](#获取权限)
     - [添加环境变量](#添加环境变量)
     - [开启Terminal自动补全功能](#开启terminal自动补全功能)
+    - [使用Touch ID进行sudo身份验证](使用touch-id进行sudo身份验证)
     - [更改系统语言](#更改系统语言)
     - [修改终端电脑名称](#修改终端电脑名称)
     - [终端开启允许安装任何来源App](#终端开启允许安装任何来源app)
@@ -556,8 +557,11 @@ say -o new.mp3 -f empty.txt
 
 ```bash
 # 此指令需要管理员权限
-# 现在关机
+# 立刻关机
 sudo shutdown -h now
+
+# 立刻重启
+sudo shutdown -r now
 
 # 10分钟后重启
 sudo shutdown -r +10
@@ -680,6 +684,22 @@ vim ~/.inputrc
 ```bash
 set completion-ignore-case on set show-all-if-ambiguous on TAB: menu-complete
 ```
+
+### 使用Touch ID进行sudo身份验证
+
+首先打开终端，输入如下指令：
+
+```bash
+sudo vim /etc/pam.d/sudo
+```
+
+然后在`# sudo: auth account password session`的下一行添加如下字符串，保存退出即可
+
+```bash
+auth       sufficient     pam_tid.so
+```
+
+如果想还原的话，再打开此文件删除此字符串即可
 
 ### 更改系统语言 
 
