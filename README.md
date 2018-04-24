@@ -1,7 +1,7 @@
 MacOS终端指令
 ================
 
-在终端中使用指令操作可以帮助我们减去很多繁琐的操作，大大方便了工作效率，[MacOS][MacOS]系统是全世界第一个基于[FreeBSD][FreeBSD]系统采用“面向对象操作系统”的全面的操作系统，且[FreeBSD][FreeBSD]和[Linux][Linux]又都是[类Unix][Unix]的操作系统（意思就是它们都是基于Unix系统重新开发而来的系统），所以两者的指令在很多地方都是相同的，如果你玩的了[Linux][Linux]那么[MacOS][MacOS]系统自然也就不在话下了
+在终端中使用指令操作可以帮助我们减去很多繁琐的操作，大大方便了工作效率，[MacOS][MacOS]系统是全世界第一个基于[FreeBSD][FreeBSD]系统采用“面向对象操作系统”的全面的操作系统，且[FreeBSD][FreeBSD]和[Linux][Linux]又都是[类Unix][Unix]的操作系统（意思就是它们都是基于Unix系统重新开发的），所以两者的指令在很多地方都是相同的，如果你玩的了[Linux][Linux]那么[MacOS][MacOS]系统自然也就不在话下了
 
 **注意：** 以下指令我只在 [`macOS High Sierra 10.13.3`][MacOS_High_Sierra] 版本上测试过，跟其他版本或许有所不同！
 
@@ -56,7 +56,7 @@ MacOS终端指令
     - [截图](#截图)
     - [禁止生成 DS_Store 文件](#禁止生成-ds_store-文件)
     - [清理系统](#清理系统)
-* [其它的系统问题](#其它的系统问题)
+* [其它的常见问题](#其它的常见问题)
     - [强制退出程序](#强制退出程序)
     - [账户管理权限丢失](#账户管理权限丢失)
     - [重置被遗忘的管理员密码](#重置被遗忘的管理员密码)
@@ -67,6 +67,7 @@ MacOS终端指令
     - [查看目录或磁盘占用空间](#查看目录或磁盘占用空间)
     - [查看苹果所有的高清图标](#查看苹果所有的高清图标)
     - [去掉副本图标上的箭头](#去掉副本图标上的箭头)
+    - [快速建立 www 服务](#快速建立_www_服务)
 
 ## 系统目录 
 
@@ -681,7 +682,7 @@ vim ~/.inputrc
 
 粘贴如下语句并保存
 
-```bash
+```
 set completion-ignore-case on set show-all-if-ambiguous on TAB: menu-complete
 ```
 
@@ -845,7 +846,7 @@ ls -al /var/log/*.out
 ```
 
 
-## 其它的系统问题 
+## 其它的常见问题 
 
 ### 强制退出程序 
 
@@ -962,16 +963,38 @@ killall Finder
 如果想还原，只需要把文件名重新命名成`AliasBadgeIcon.icns`即可
 
 
+### 快速建立 www 服务
+
+在 Terminal 中进入要分享的文件目录下，执行如下指令，可快速建立 www 服务，可以迅速分享文件给同事，关闭服务的话，只需要关闭终端即可
+
+访问时，只需要输入`http://Your IP4 address:8000`
+
+```python
+# python2
+# 如果你未安装 python3 的话，请执行此命令
+python -m SimpleHTTPServer 8000
+
+# python3
+python3 -m http.server 8000
+```
+
+
 ## 贡献
 
 如果您想对此项目作出贡献的话，可以按照下列步骤操作
 
-* 首先`Fork`该项目
-* 点击项目下方的`Clone or download`选项，然后选择`Use SSH`，复制下方的地址
-* 在本地执行`git clone SSH地址`指令
-* `cd`进入项目目录下，再新建一个分支并切换到该分支`git checkout -b 分支名`，然后`git commit -am "... ..."`提交修改
-* 然后指定刚才新建的分支，跟远程仓库分支之间的链接关系`git push --set-upstream origin 分支名`
-* 最后执行`git pull` 和 `git push`
+1.首先`Fork`此项目
+2.复制拷贝到你 Github 账号下的 macCommand 库的 `SSH` 地址
+3.执行`git clone`将此库下载到本地
+4.进入该库，新建一个分支并切换到该分支`git checkout -b 分支名`
+5.修改内容
+6.提交修改`git commit -am "在此输入修改或增加了什么内容"`
+7.指定新建的分支跟远程仓库分支之间的链接关系`git push --set-upstream origin 刚才新建的分支名`
+8.提交`git push`
+9.回到你的 Github，进入刚才`Fork`而来的仓库，这时你会看到一个`Compare & pull request`
+10.点击那个按钮提交拉请求
+
+如果不懂的可以按照此库的操作步骤，操作一边 [first-contributions](https://github.com/Roshanjossey/first-contributions/blob/master/README.md)
 
 
 ## 许可
