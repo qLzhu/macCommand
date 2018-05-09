@@ -68,6 +68,7 @@ MacOS终端指令
     - [查看苹果所有的高清图标](#查看苹果所有的高清图标)
     - [去掉副本图标上的箭头](#去掉副本图标上的箭头)
     - [快速建立 www 服务](#快速建立_www_服务)
+    - [hosts文件的位置](#hosts文件的位置)
 
 ## 系统目录 
 
@@ -976,6 +977,13 @@ python -m SimpleHTTPServer 8000
 
 # python3
 python3 -m http.server 8000
+```
+
+
+### hosts文件的位置
+
+```
+/etc/hosts
 ```
 
 
