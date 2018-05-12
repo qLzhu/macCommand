@@ -1000,22 +1000,22 @@ python3 -m http.server 8000
 ```
 
 
-## 贡献
+## 如何参与此项目
 
 如果您想对此项目作出贡献的话，可以按照下列步骤操作
 
-1.首先`Fork`此项目
-2.复制拷贝到你 Github 账号下的 macCommand 库的 `SSH` 地址
-3.执行`git clone`将此库下载到本地
-4.进入该库，新建一个分支并切换到该分支`git checkout -b 分支名`
-5.修改内容
-6.提交修改`git commit -am "在此输入修改或增加了什么内容"`
-7.指定新建的分支跟远程仓库分支之间的链接关系`git push --set-upstream origin 刚才新建的分支名`
-8.提交`git push`
-9.回到你的 Github，进入刚才`Fork`而来的仓库，这时你会看到一个`Compare & pull request`
-10.点击那个按钮提交拉请求
+1.首先`Fork`此项目  
+2.复制拷贝到你 Github 账号下的 macCommand 库的 `SSH` 地址  
+3.在指定位置执行`git clone 你账户下的 macCommand 库的SSH或Https地址`
+4.进入该库，新建一个分支并切换到该分支`git checkout -b 分支名`  
+5.修改内容  
+6.提交修改`git commit -am "在此输入修改或增加了什么内容"`  
+7.指定新建的分支跟远程仓库分支之间的链接关系`git push --set-upstream origin 刚才新建的分支名`  
+8.提交`git push`  
+9.回到你的 Github，进入刚才`Fork`而来的仓库，这时你会看到一个`Compare & pull request` 
+10.点击那个按钮提交拉请求  
 
-如果不懂的可以按照此库的操作步骤，操作一边 [first-contributions](https://github.com/Roshanjossey/first-contributions/blob/master/README.md)
+如果不懂的可以按照此库的操作步骤，操作一遍 [first-contributions](https://github.com/Roshanjossey/first-contributions/blob/master/README.md)
 
 
 ## 许可
