@@ -43,6 +43,7 @@ MacOS终端指令
 * [系统配置](#系统配置)
     - [获取权限](#获取权限)
     - [添加环境变量](#添加环境变量)
+    - [随机生成一个MAC地址](#随机生成一个mac地址)
     - [开启Terminal自动补全功能](#开启terminal自动补全功能)
     - [使用Touch ID进行sudo身份验证](使用touch-id进行sudo身份验证)
     - [更改系统语言](#更改系统语言)
@@ -671,6 +672,16 @@ sudo ls -a
 # echo 指令的方式添加环境变量
 echo "export PATH=xxxxxx:$PATH" >> ~/.bash_profile
 source ~/.bash_profile
+```
+
+### 随机生成一个MAC地址
+
+按住`option`键点击屏幕上方的“无线”图标，查看下 MAC 地址是多少，然后打开 Terminal 终端输入`ifconfig`，找到你 MAC 地址对应的参数，例如：我的是在`en0`下的`ether`里
+
+```bash
+# 随机生成一个MAC地址
+# 系统重启恢复到原本的地址
+sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`
 ```
 
 ### 开启Terminal自动补全功能
