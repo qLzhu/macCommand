@@ -70,6 +70,7 @@ MacOS终端指令
     - [去掉副本图标上的箭头](#去掉副本图标上的箭头)
     - [快速建立 www 服务](#快速建立_www_服务)
     - [hosts文件的位置](#hosts文件的位置)
+    - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
 
 ## 系统目录 
 
@@ -1000,27 +1001,22 @@ python3 -m http.server 8000
 ```
 
 
-## 如何参与此项目
+### 终端下出现bogon的解决办法
 
-如果您想对此项目作出贡献的话，可以按照下列步骤操作
+```bash
+# 1.将DNS设置为Google的DNS服务器地址 8.8.8.8
+# 在“系统偏好设置” => “Wi-Fi” => “高级” => “DNS” => “+” 中添加
 
-1.首先`Fork`此项目  
-2.复制拷贝到你 Github 账号下的 macCommand 库的 `SSH` 地址  
-3.在指定位置执行`git clone 你账户下的 macCommand 库的SSH或Https地址`
-4.进入该库，新建一个分支并切换到该分支`git checkout -b 分支名`  
-5.修改内容  
-6.提交修改`git commit -am "在此输入修改或增加了什么内容"`  
-7.指定新建的分支跟远程仓库分支之间的链接关系`git push --set-upstream origin 刚才新建的分支名`  
-8.提交`git push`  
-9.回到你的 Github，进入刚才`Fork`而来的仓库，这时你会看到一个`Compare & pull request` 
-10.点击那个按钮提交拉请求  
-
-如果不懂的可以按照此库的操作步骤，操作一遍 [first-contributions](https://github.com/Roshanjossey/first-contributions/blob/master/README.md)
+# 2.终端内修改
+sudo hostname your-desired-host-name
+sudo scutil --set LocalHostName $(hostname)
+sudo scutil --set HostName $(hostname)
+```
 
 
-## 许可
+## 开源协议
 
-文档和代码根据 [MIT许可证](./LICENSE) 发布
+macCommand 里的文档和代码使用 MIT 开源协议100%开放，[查看开源协议](https://github.com/qLzhu/macCommand/blob/master/LICENSE)
 
 
 [MacOS]:https://zh.wikipedia.org/wiki/MacOS
