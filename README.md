@@ -1017,6 +1017,8 @@ python3 -m http.server 8000
 
 ### hosts文件的位置
 
+如需Google等最新服务器地址的请移步到https://github.com/googlehosts/hosts
+
 ```bash
 # 修改 hosts 文件时需要注意的
 # IP 和 域名之间需要两个空格，否则不会生效
