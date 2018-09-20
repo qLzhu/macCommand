@@ -866,6 +866,12 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE2
 defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 ```
 
+### 安全清空垃圾桶
+
+```bash
+sudo rm -rfv ~/.Trash /Volumes/*/.Trashes
+```
+
 ### 清理系统
 
 ```bash
