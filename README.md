@@ -886,6 +886,12 @@ sudo periodic daily weekly monthly
 
 # 默认运行过程是没有任何反馈的，如果你想看到执行的结果，以执行这个指令
 ls -al /var/log/*.out
+
+# 清除QuickLook缓存文件
+sudo rm -rf /private/var/folders/
+
+# 清除缓存文件
+sudo rm -rf ~/Library/Caches/*
 ```
 
 
