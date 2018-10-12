@@ -74,6 +74,7 @@ MacOS终端指令
     - [快速建立 www 服务](#快速建立_www_服务)
     - [hosts文件的位置](#hosts文件的位置)
     - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
+    - [剪切文件或文件夹](#剪切文件或文件夹)
 
 ## 系统目录 
 
@@ -890,7 +891,7 @@ ls -al /var/log/*.out
 # 清除QuickLook缓存文件
 sudo rm -rf /private/var/folders/
 
-# 清除缓存文件
+# 清除缓存文件（注意此操作会清除浏览器的收藏夹、插件和数据等）
 sudo rm -rf ~/Library/Caches/*
 ```
 
@@ -1050,6 +1051,13 @@ sudo hostname your-desired-host-name
 sudo scutil --set LocalHostName $(hostname)
 sudo scutil --set HostName $(hostname)
 ```
+
+
+### 剪切文件或文件夹
+
+1、复制需要剪切的文件/文件夹（右键“拷贝”或快捷键“command + c”），然后在需要粘贴的位置按住“option”键右击，会出现“将项目移到这里”的选项，点击它就会把刚才的项目剪切到此处
+
+2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
 
 
 ## 开源协议
