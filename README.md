@@ -25,6 +25,7 @@ MacOS终端指令
     - [cp](#cp)
     - [mv](#mv)
     - [rm](#rm)
+    - [tree](#tree)
     - [nl](#nl)
     - [wc](#wc)
     - [head](#head)
@@ -427,6 +428,21 @@ rm -r empty
 
 # 命令执行完成后，显示都是删除了那些文件或目录
 rm -v empty
+```
+
+### tree 
+
+`tree`命令以树状图列出文件目录结构，需要单独安装
+
+```bash
+# 使用 brew 安装 tree
+brew install tree
+
+# 显示指定层级的目录
+tree -L 2
+
+# 列出权限标示
+tree -p
 ```
 
 ### nl 
@@ -1055,7 +1071,7 @@ sudo scutil --set HostName $(hostname)
 
 ### 剪切文件或文件夹
 
-1、复制需要剪切的文件/文件夹（右键“拷贝”或快捷键“command + c”），然后在需要粘贴的位置按住“option”键右击，会出现“将项目移到这里”的选项，点击它就会把刚才的项目剪切到此处
+1、复制需要剪切的文件/文件夹（右键`拷贝`或快捷键`command` + `c`），然后在需要粘贴的位置按住`option`键右击，会出现`将项目移到这里`的选项，点击它就会把刚才的项目剪切到此处
 
 2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
 
