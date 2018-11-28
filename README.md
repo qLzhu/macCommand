@@ -76,6 +76,7 @@ MacOS终端指令
     - [hosts文件的位置](#hosts文件的位置)
     - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
     - [剪切文件或文件夹](#剪切文件或文件夹)
+    - [根目录下的CFUserTextEncoding文件](#根目录下的CFUserTextEncoding文件)
 
 ## 系统目录 
 
@@ -1074,6 +1075,19 @@ sudo scutil --set HostName $(hostname)
 1、复制需要剪切的文件/文件夹（右键`拷贝`或快捷键`command` + `c`），然后在需要粘贴的位置按住`option`键右击，会出现`将项目移到这里`的选项，点击它就会把刚才的项目剪切到此处
 
 2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
+
+
+### 根目录下的CFUserTextEncoding文件
+
+`~/.CFUserTextEncoding`存储用户的默认文本编码和首选语言的文件
+
+```
+# 参考博客地址
+http://www.kbase101.com/question/38628.html
+
+# Mac OS X 参考库技术说明2228
+https://developer.apple.com/library/archive/technotes/tn2228/_index.html
+```
 
 
 ## 开源协议
