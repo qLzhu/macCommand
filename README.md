@@ -3,7 +3,9 @@ MacOS终端命令
 
 在终端中使用命令操作可以帮助我们减去很多繁琐的操作，大大方便了工作效率，[MacOS][MacOS]系统是全世界第一个基于[FreeBSD][FreeBSD]系统采用“面向对象操作系统”的全面的操作系统，且[FreeBSD][FreeBSD]和[Linux][Linux]又都是[类Unix][Unix]的操作系统（意思就是它们都是基于Unix系统重新开发的），所以两者的命令在很多地方都是相同的，如果你玩的了[Linux][Linux]那么[MacOS][MacOS]系统自然也就不在话下了
 
-**注意：** 以下命令我只在 [`macOS High Sierra 10.13.3`][MacOS_High_Sierra] 版本上测试过，跟其他版本或许有所不同！
+**注意：** 以下命令我只在 [`macOS High Sierra 10.13.3+`][MacOS_High_Sierra] 版本上测试过，跟其他版本或许有所不同！
+
+以下文章中文件将使用`empty`代替，目录使用`directory`
 
 正在不断完善中，欢迎 Star！
 
@@ -197,15 +199,29 @@ ls -l empty
 
 **修改文件所属组**
 
-```
-# chgrp [-R] 群组名 文件或目录的名称
--R：递归修改
+```bash
+chgrp [-R(递归修改)] 群组名 文件或目录的名称
+
+# 修改文件的所属组
+chgrp wheel empty
+
+# 修改目录里所有文件所属组
+chgrp -R wheel directory
 ```
 
 **修改文件拥有者**
 
-```
+```bash
 chown [-R] 用户名:群组名 文件或目录的名称
+
+# 修改文件的拥有者
+chown qinlzhu empty
+
+# 修改目录里所有文件的拥有者
+chown -R qinlzhu directory
+
+# 修改文件拥有者的同时也修改所属组
+chown qinlzhu:wheel empty
 ```
 
 ## 终端的基本命令操作 
@@ -216,7 +232,7 @@ chown [-R] 用户名:群组名 文件或目录的名称
 
 当执行`man cd`时，第一行会出现一个`(1)`，其中的数字代表命令的类型，常用的数字及其类型如下：
 
-```
+```bash
 1   用户在 shell 环境中可以操作的命令或者可执行文件
 5   配置文件
 8   系统管理员可以使用的管理命令
