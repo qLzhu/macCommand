@@ -72,11 +72,12 @@ MacOS终端指令
     - [查看目录或磁盘占用空间](#查看目录或磁盘占用空间)
     - [查看苹果所有的高清图标](#查看苹果所有的高清图标)
     - [去掉副本图标上的箭头](#去掉副本图标上的箭头)
-    - [快速建立 www 服务](#快速建立_www_服务)
+    - [快速建立 www 服务](#快速建立-www-服务)
     - [hosts文件的位置](#hosts文件的位置)
     - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
     - [剪切文件或文件夹](#剪切文件或文件夹)
     - [根目录下的CFUserTextEncoding文件](#根目录下的CFUserTextEncoding文件)
+    - [容器中的其他卷宗的问题](#容器中的其他卷宗的问题)
 
 ## 系统目录 
 
@@ -1088,6 +1089,40 @@ http://www.kbase101.com/question/38628.html
 # Mac OS X 参考库技术说明2228
 https://developer.apple.com/library/archive/technotes/tn2228/_index.html
 ```
+
+
+### 容器中的其他卷宗的问题
+
+点击“”-“关于本机”-“储存空间”，可以看到储存条中有个白色的加斜杠的块，当你把鼠标移上去后，会显示此块是“容器中的其他卷宗”，这是格式升级成APFS后会多出來的东西
+
+你也可以在终端中输入如下命令：
+```bash
+# 查看磁盘结构的命令
+diskutil list
+
+# 回车后会出现如下信息
+/dev/disk0 (internal):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                         251.0 GB   disk0
+   1:                        EFI EFI                     314.6 MB   disk0s1
+   2:                 Apple_APFS Container disk1         250.7 GB   disk0s2
+
+/dev/disk1 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +250.7 GB   disk1
+                                 Physical Store disk0s2
+   1:                APFS Volume Macintosh HD            181.5 GB   disk1s1
+   2:                APFS Volume Preboot                 42.8 MB    disk1s2
+   3:                APFS Volume Recovery                512.8 MB   disk1s3
+   4:                APFS Volume VM                      3.2 GB     disk1s4
+
+# 如下三条就是就是”容器中的其它宗卷“，其中VM，是可变的，里面是系统必须的睡眠文件和交换文件，路径是/private/var/vm
+
+    2:                APFS Volume Preboot                 42.8 MB    disk1s2
+    3:                APFS Volume Recovery                512.8 MB   disk1s3
+    4:                APFS Volume VM                      3.2 GB     disk1s4
+```
+
 
 
 ## 开源协议
