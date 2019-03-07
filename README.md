@@ -43,6 +43,7 @@ MacOS终端命令
     - [alias](#alias)
     - [caffeinate](#caffeinate)
     - [ps](#ps)
+    - [du](#du)
     - [cal](#cal)
     - [date](#date)
 * [系统配置](#系统配置)
@@ -50,7 +51,7 @@ MacOS终端命令
     - [添加环境变量](#添加环境变量)
     - [随机生成一个MAC地址](#随机生成一个mac地址)
     - [开启Terminal自动补全功能](#开启terminal自动补全功能)
-    - [使用Touch ID进行sudo身份验证](使用touch-id进行sudo身份验证)
+    - [使用Touch ID进行sudo身份验证](#使用touch-id进行sudo身份验证)
     - [更改系统语言](#更改系统语言)
     - [修改终端电脑名称](#修改终端电脑名称)
     - [终端开启允许安装任何来源App](#终端开启允许安装任何来源app)
@@ -303,6 +304,10 @@ cd ~/.Trash
 
 # 前往其他卷
 cd /Volumes/
+
+# 利用bash 的 $_ 变量，创建一个目录并立即进入该目录
+# $_ 代表前一个命令的最后一个参数的值，如果没有参数的话，就是命令本身的名字
+mkdir directory && cd $_
 ```
 
 ## pwd 
@@ -672,6 +677,11 @@ alias Tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # 删除定义的命令
 unalias Tree
+
+# 打印已经设置的命令别名
+alias
+# 或
+alias -p
 ```
 
 ### caffeinate
@@ -705,6 +715,29 @@ ps -A
 
 # 查看所有进程（包含其他用户，相当于系统下的所有进程）
 ps -e
+```
+
+### du 
+
+`du`命令显示每个文件和目录的磁盘使用空间
+
+```bash
+# 显示当前目录及其当前目录下所有子目录的大小(以byte为单位)
+du 
+
+# 显示指定文件及其目录的大小
+du empty.txt
+
+# 显示多个文件及其目录的大小
+du empty.txt emptyTwo.txt
+
+# 只显示总和，只列出最后加总的值
+du -s
+# 或
+du -s directory
+
+# 以K，M，G为单位，提高信息的可读性
+du -h empty.txt
 ```
 
 ### cal 
