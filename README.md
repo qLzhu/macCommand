@@ -60,6 +60,7 @@ MacOS终端命令
     - [显示文件路径](#显示文件路径)
     - [更改 Finder 每次打开时默认显示的目录](#更改-finder-每次打开时默认显示的目录)
     - [不显示最近使用的项目](#不显示最近使用的项目)
+    - [隐藏桌面所有内容](#隐藏桌面所有内容)
     - [截图](#截图)
     - [禁止生成 DS_Store 文件](#禁止生成-ds_store-文件)
     - [安全清空垃圾桶](#安全清空垃圾桶)
@@ -80,6 +81,7 @@ MacOS终端命令
     - [hosts文件的位置](#hosts文件的位置)
     - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
     - [剪切文件或文件夹](#剪切文件或文件夹)
+    - [根目录下有关bash相关的文件](#根目录下有关bash相关的文件)
     - [根目录下的CFUserTextEncoding文件](#根目录下的CFUserTextEncoding文件)
     - [容器中的其他卷宗的问题](#容器中的其他卷宗的问题)
 
@@ -904,6 +906,18 @@ killall Finder
 
 如果你不想显示Finder、Quick Time Player、Sublime Text等等最近使用的项目记录的话，点击“系统偏好设置” => “通用” => “最近使用的项目” => “n 个文稿、应用和服务器”，把数字改成 0 就可以了
 
+### 隐藏桌面所有内容
+
+```bash
+# 隐藏
+defaults write com.apple.finder CreateDesktop -bool FALSE
+killall Finder
+
+# 恢复
+defaults write com.apple.finder CreateDesktop -bool true
+killall Finder
+```
+
 ### 截图 
 
 截取屏幕全部区域：`command + shift + 3`
@@ -1156,6 +1170,31 @@ sudo scutil --set HostName $(hostname)
 2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
 
 
+### 根目录下有关bash相关的文件
+
+Mac 下自带了很多解析 Shell 脚本的解释器，例如：bash、zsh等。如果想查看 Mac 都内置了那些 Shell 脚本的解释器，可以输入以下任意一个命令查看
+
+```bash
+cat /etc/shells
+
+# 或
+ls -l /bin/*sh
+```
+
+以下是 Mac 下跟 Bash 解析器有关的文件/文件夹
+
+- `.bash_history` 记录了以前执行过的 bash 命令
+- `.bash_profile` Mac 配置环境变量的文件
+- `.bash_sessions` 里面包含了每次使用 bash 所做的操作的文件列表（文件夹）
+<!-- `.bashrc` Mac 下无此文件（系统在交互式和非登录式 bash shell 操作时读取执行的环境变量配置文件） -->
+
+**Mac 下为什么没有`.bashrc`文件？**
+
+在 Unix 和 Linux 下正常情况是，`.bash_profile`执行登录Shell(login shell)，同时`.bashrc`执行交互式非登录Shell(no-login shell)
+
+在 Linux 下，当用户登录到一个图形界面，然后打开一个终端 Terminal，那些 Shell 是 non-login shell。然而，在 OS X 登录的时候，并没有运行着一个 Shell，所以，在运行 Terminal 的时候，其实是一个 login shell，所以它就没有`.bashrc`文件
+
+
 ### 根目录下的CFUserTextEncoding文件
 
 `~/.CFUserTextEncoding`存储用户的默认文本编码和首选语言的文件
@@ -1201,11 +1240,6 @@ diskutil list
     4:                APFS Volume VM                      3.2 GB     disk1s4
 ```
 
-
-
-## 开源协议
-
-macCommand 里的文档和代码使用 MIT 开源协议100%开放，[查看开源协议](https://github.com/qLzhu/macCommand/blob/master/LICENSE)
 
 
 [MacOS]:https://zh.wikipedia.org/wiki/MacOS
