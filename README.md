@@ -15,37 +15,51 @@ MacOS终端命令
 * [系统目录](#系统目录)
 * [权限信息](#权限信息)
 * [终端的基本命令操作](#终端的基本命令操作)
-    - [man](#man)
-    - [history](#history)
-    - [clear](#clear)
-    - [!!](#!!)
-    - [cd](#cd)
-    - [pwd](#pwd)
-    - [ls](#ls)
-    - [open](#open)
-    - [touch](#touch)
-    - [cp](#cp)
-    - [mv](#mv)
-    - [rm](#rm)
-    - [tree](#tree)
-    - [nl](#nl)
-    - [wc](#wc)
-    - [head](#head)
-    - [tail](#tail)
-    - [mkdir](#mkdir)
-    - [rmdir](#rmdir)
-    - [say](#say)
-    - [shutdown](#shutdown)
-    - [passwd](#passwd)
-    - [which](#which)
-    - [who](#who)
-    - [whoami](#whoami)
-    - [alias](#alias)
-    - [caffeinate](#caffeinate)
-    - [ps](#ps)
-    - [du](#du)
-    - [cal](#cal)
-    - [date](#date)
+    - [基础操作](#基础操作)
+        + [clear](#clear)
+        + [man](#man)
+        + [say](#say)
+        + [!!](#!!)
+        + [type](#type)
+        + [which](#which)
+        + [alias](#alias)
+        + [who](#who)
+        + [whoami](#whoami)
+        + [open](#open)
+        + [history](#history)
+    - [日期时间](#日期时间)
+        + [cal](#cal)
+        + [date](#date)
+    - [文件相关操作](#文件相关操作)
+        + [touch](#touch)
+        + [cp](#cp)
+        + [mv](#mv)
+        + [rm](#rm)
+        + [cat](#cat)
+        + [more](#more)
+        + [head](#head)
+        + [tail](#tail)
+        + [nl](#nl)
+        + [wc](#wc)
+    - [目录相关操作](#目录相关操作)
+        + [mkdir](#mkdir)
+        + [rmdir](#rmdir)
+        + [ls](#ls)
+        + [tree](#tree)
+        + [cd](#cd)
+        + [pwd](#pwd)
+    - [磁盘管理](#磁盘管理)
+        + [du](#du)
+    - [进程相关操作](#进程相关操作)
+        + [ps](#ps)
+    - [安全相关操作](#安全相关操作)
+        + [chmod](#修改权限)
+        + [chown](#修改文件拥有者)
+        + [chgrp](#修改文件所属组)
+        + [passwd](#passwd)
+    - [系统关机和重启](#系统关机和重启)
+        + [caffeinate](#caffeinate)
+        + [shutdown](#shutdown)
 * [系统配置](#系统配置)
     - [获取权限](#获取权限)
     - [添加环境变量](#添加环境变量)
@@ -64,7 +78,7 @@ MacOS终端命令
     - [禁止生成 DS_Store 文件](#禁止生成-ds_store-文件)
     - [安全清空垃圾桶](#安全清空垃圾桶)
     - [清理系统](#清理系统)
-* [其它的系统故障及其常见问题](#其它的系统故障及其常见问题)
+* [其它的系统故障及其常见疑问](#其它的系统故障及其常见疑问)
     - [强制退出程序](#强制退出程序)
     - [账户管理权限丢失](#账户管理权限丢失)
     - [重置被遗忘的管理员密码](#重置被遗忘的管理员密码)
@@ -84,8 +98,9 @@ MacOS终端命令
     - [根目录下的CFUserTextEncoding文件](#根目录下的CFUserTextEncoding文件)
     - [容器中的其他卷宗的问题](#容器中的其他卷宗的问题)
 
-## 系统目录 
 
+系统目录
+----
 [MacOS][MacOS]是基于[FreeBSD][FreeBSD]开发的，而[FreeBSD][FreeBSD]又是[Unix][Unix]派生的，所以你可以理解为[MacOS][MacOS]的最底层是[Unix][Unix]，[Unix][Unix]的所有文件都挂在系统的根目录`/`下面，[MacOS][MacOS]也是一样，所以就不要再想象着像[Window][window]系统那样C盘、D盘的概念啦!
 
 __例如：__我在 Macbook 上插了一个叫 empty 的移动硬盘，并且在电脑的桌面上显示了这个硬盘图标，那么它实际位置在哪呐？其实它在`/Volumes`目录下，你执行下`ls /Volumes/empty`看看是不是移动硬盘里面的内容
@@ -117,7 +132,7 @@ __例如：__我在 Macbook 上插了一个叫 empty 的移动硬盘，并且在
 /private      里面的子目录存放了/tmp、/var、/etc等链接目录的目标目录
 ```
 
-## 权限信息 
+### 权限信息 
 
 当你执行`ls -l`命令查看一个文件信息的时候，系统会为你列出如下格式的权限信息，共10个字符
 
@@ -227,15 +242,26 @@ chown -R qinlzhu directory
 chown qinlzhu:wheel empty
 ```
 
-## 终端的基本命令操作 
 
-### man 
+终端的基本命令操作
+---- 
+### 基础操作
+
+#### clear 
+
+`clear`命令用于清除当前屏幕终端上的任何信息
+
+```bash
+clear
+```
+
+#### man 
 
 `man`是“manual”的缩写，是一个帮助命令，通过`man`命令可以查看 Mac OS X系统中的命令帮助、配置文件帮助和编程帮助等信息
 
 当执行`man cd`时，第一行会出现一个`(1)`，其中的数字代表命令的类型，常用的数字及其类型如下：
 
-```bash
+```
 1   用户在 shell 环境中可以操作的命令或者可执行文件
 5   配置文件
 8   系统管理员可以使用的管理命令
@@ -250,30 +276,43 @@ man cd
 cd --help
 ```
 
-### history 
+#### alias
 
-`history`命令用于显示指定数目的命令，读取历史命令文件中的目录到历史命令缓冲区和将历史命令缓冲区中的目录写入命令文件
-
-```bash
-# 查看以前所有执行过的终端命令（前提是你没清理过）
-history
-
-# 查看最近执行过的 6 条命令
-history 6
-
-# 立即清空 history 里的历史命令记录
-history -c
-```
-
-### clear 
-
-`clear`命令用于清除当前屏幕终端上的任何信息
+`alias`命令用来定义命令别名
 
 ```bash
-clear
+# 定义一个列出目录树的命令
+alias Tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+# 删除定义的命令
+unalias Tree
+
+# 打印已经设置的命令别名
+alias
+# 或
+alias -p
 ```
 
-### !! 
+#### say
+
+`say`命令是用来文本转换语音的，当然你也可以结合一些其他的命令玩，例如：执行某段程序后，使用`say`命令提示你
+
+```bash
+# 朗读文字
+say hello
+
+# 更改朗读的人物
+# 可以使用“say -v ?”查看，都有哪些人物
+say -v Diego
+
+# 朗读一个文件
+say -f "empty"
+
+# 朗读的语音保存成一个音频文件
+say -o new.mp3 -f "empty"
+```
+
+#### !! 
 
 `!!`执行上一条命令
 
@@ -281,76 +320,41 @@ clear
 !!
 ```
 
-### cd 
+#### type
 
-`cd`命令用来切换工作目录
-
-```bash
-# 进入用户根目录
-cd
-# 或
-cd ~
-
-# 进入系统根目录
-cd /
-
-# 回到上次所在目录
-cd -
-
-# 回到上一级目录
-cd ..
-
-# 进入到指定目录下，例如：.Trash「回收站」
-cd ~/.Trash
-
-# 前往其他卷
-cd /Volumes/
-
-# 利用bash 的 $_ 变量，创建一个目录并立即进入该目录
-# $_ 代表前一个命令的最后一个参数的值，如果没有参数的话，就是命令本身的名字
-mkdir directory && cd $_
-```
-
-## pwd 
-
-`pwd`命令以绝对路径的方式显示用户当前所在的工作目录位置
+`type`命令用来判断某命令是不是 bash 内置命令，或是来自外部
 
 ```bash
-pwd
+# cd is a shell builtin
+# 表示 cd 是 bash 内置命令
+type cd
+
+# ls is hashed (/bin/ls)
+# 表示 ls 是外部命令，后面是程序路径
+type ls
+
+# sublime is aliased to `open -a /Applications/Sublime\ Text.app'
+# 表示 sublime 是用 alias 自定义的命令别名，后面是定义内容
+type sublime
 ```
 
-### ls 
+### which
 
-`ls`命令用来列出目标目录中所有的子目录和文件。注意参数的大小写
+`which`命令用来查看某个命令所在的位置
 
 ```bash
-# 列出当前目录下非隐藏的文件和目录，等价于“ls -C（注意：大写）”
-ls
-
-# 列出目录下的所有文件，包括以“.”开头的隐含文件
-ls -a
-ls -all
-
-# 与上面的“ls -a”命令几乎相同，只不过是此命令不显示“.（当前目录）”和“..（父级目录）”这两个
-ls -A
-
-# 列出当前目录下非隐藏的文件和目录，并用逗号“,”分割
-ls -m
-
-# 列出当前目录下所有的文件或目录详细信息
-ls -l
-
-# 列出指定文件的详细信息
-ls -l empty
-
-# 用文件或目录修改的时间进行排序
-ls -t
-
-# 递归显示文件，会把此根目录下的所有文件都显示出来
-ls -R
+which ls
 ```
 
-### open 
+#### who
+
+`who`命令用列出当前登陆的所有用户
+
+#### whoami
+
+`whoami`命令用显示当前正进行操作的用户名
+
+#### open 
 
 `open`命令用于打开文件、目录或执行程序。等同于图形界面下的重复“双击”动作
 
@@ -383,7 +387,46 @@ open https://github.com/
 open -a Google\ Chrome https://github.com/
 ```
 
-### touch
+#### history 
+
+`history`命令用于显示指定数目的命令，读取历史命令文件中的目录到历史命令缓冲区和将历史命令缓冲区中的目录写入命令文件
+
+```bash
+# 查看以前所有执行过的终端命令（前提是你没清理过）
+history
+
+# 查看最近执行过的 6 条命令
+history 6
+
+# 立即清空 history 里的历史命令记录
+history -c
+```
+
+### 日期时间
+
+#### cal 
+
+显示日历
+
+```bash
+# 显示当月日历
+cal
+
+# 显示2014年9月份的日历
+cal 9 2014
+```
+
+#### date
+
+显示系统的当前日期和时间
+
+```
+date
+```
+
+### 文件相关操作
+
+#### touch
 
 `touch`命令用来创建或修改文件
 
@@ -399,7 +442,7 @@ touch -t 20180324192900 empty
 touch -mt 20160324192900 empty
 ```
 
-### cp 
+#### cp 
 
 `cp`命令是用来复制文件或目录
 
@@ -424,7 +467,7 @@ cp empty newEmpty
 cp empty ~/Downloads/newEmpty
 ```
 
-### mv 
+#### mv 
 
 `mv`命令是用改变文件名或所在目录的位置
 
@@ -439,7 +482,7 @@ mv empty ~/Downloads/empty
 mv empty ~/Downloads/newEmpty
 ```
 
-### rm 
+#### rm 
 
 `rm`命令是用来删除文件和目录，对于链接文件，只是删除整个链接文件，而原有文件保持不变。使用 rm 命令需要格外小心。因为一旦删除了一个文件，就无法再恢复它
 
@@ -463,98 +506,122 @@ rm -r empty
 rm -v empty
 ```
 
-### tree 
+#### cat 
 
-`tree`命令以树状图列出文件目录结构，需要单独安装
-
-```bash
-# 使用 brew 安装 tree
-brew install tree
-
-# 显示指定层级的目录
-tree -L 2
-
-# 列出权限标示
-tree -p
-```
-
-### nl 
-
-`nl`命令用来指定文件的行号显示方式
+`cat`命令用来显示文件的内容
 
 ```bash
-# 给某个文件添加上行数在终端显示（空白行不会添加）
-nl empty.txt
-# 或
-nl -b t empty.txt
+# 终端显示文件内容
+cat "empty"
 
-# 不论是否为空行，也同样列出行号
-nl -b a empty.txt
+# 终端显示文件内容时在每行前面加上行数
+cat -n "empty"
 
-# 不添加行号显示
-nl -b n empty.txt
+# 和-n相似，只不过对于空白行不加行数
+cat -b "empty"
 
-# 行号左对齐
-nl -n ln empty.txt
+# 遇到有连续两行以上的空白行，就代换为一行的空白行
+cat -s "empty" 
 
-# 行号右对齐（默认）
-nl -n rn empty.txt
-
-# 行号右对齐（显示六位数的行号，不足六位的前面添加 0）
-nl -n rz empty.txt
-
-# 指定行号最多显示的位数（默认为 6）
-nl -w 5 empty.txt
-
-# 把行号添加到文件内并另存为一个文件
-nl -b t empty.txt > new.txt
+# 把 A 和 B 文件合并成一个新的 C 文件
+cat A B > C
 ```
 
-### wc
+#### more
 
-`wc`命令是用来统计文件的字符数、词数和行数
+`more`命令是一个基于vi编辑器文本过滤器，它以全屏幕的方式按页显示文本文件的内容，支持vi中的关键字定位操作
 
 ```bash
-wc empty.txt
+# 指定每屏显示的行数
+# 当你按空格键时，每屏只会显示四行内容
+more -4 "empty"
 
-# 只统计行数
-wc -l empty.txt
+# 从20行处显示
+more +20 "empty"
 
-# 只统计字节数
-wc -c empty.txt
-
-# 只统计字符数
-wc -m empty.txt
-
-# 只统计字数
-wc -w empty.txt
+# 将多个空行压缩成一行显示
+more -s "empty"
 ```
 
-### head
+#### head
 
 `head`命令从头部开始显示指定文件的内容
 
 ```bash
 # 显示文件的头 10 行
-head 10 empty.txt
+head 10 "empty"
 
 # 显示文件的头 10 个字符（注意：一个中文占两个字符）
-head -c 10 empty.txt
+head -c 10 "empty"
 ```
 
-### tail
+#### tail
 
 `tail`命令从尾部开始显示指定文件的内容
 
 ```bash
 # 显示文件最后的 10 行
-tail 10 empty.txt
+tail 10 "empty"
 
 # 显示文件最后的 10 个字符（注意：一个中文占两个字符）
-tail -c 10 empty.txt
+tail -c 10 "empty"
 ```
 
-### mkdir 
+#### nl 
+
+`nl`命令用来指定文件的行号显示方式
+
+```bash
+# 给某个文件添加上行数在终端显示（空白行不会添加）
+nl "empty"
+# 或
+nl -b t "empty"
+
+# 不论是否为空行，也同样列出行号
+nl -b a "empty"
+
+# 不添加行号显示
+nl -b n "empty"
+
+# 行号左对齐
+nl -n ln "empty"
+
+# 行号右对齐（默认）
+nl -n rn "empty"
+
+# 行号右对齐（显示六位数的行号，不足六位的前面添加 0）
+nl -n rz "empty"
+
+# 指定行号最多显示的位数（默认为 6）
+nl -w 5 "empty"
+
+# 把行号添加到文件内并另存为一个文件
+nl -b t "empty" > new.txt
+```
+
+#### wc
+
+`wc`命令是用来统计文件的字符数、词数和行数
+
+```bash
+wc "empty"
+
+# 只统计行数
+wc -l "empty"
+
+# 只统计字节数
+wc -c "empty"
+
+# 只统计字符数
+wc -m "empty"
+
+# 只统计字数
+wc -w "empty"
+```
+
+### 目录相关操作
+
+#### mkdir 
 
 `mkdir`命令是用来创建文件目录
 
@@ -573,7 +640,7 @@ mkdir emptyA emptyA ~/Downloads/emptyC
 mkdir emptyA emptyB/{emptyB-A, emptyB-B, emptyB-C}
 ```
 
-### rmdir 
+#### rmdir 
 
 `rmdir`命令是用来删除空白文件目录
 
@@ -589,26 +656,168 @@ rmdir ~/Downloads/empty
 rmdir emptyA emptyB
 ```
 
-### say
+#### ls 
 
-`say`命令是用来文本转换语音的，当然你也可以结合一些其他的命令玩，例如：执行某段程序后，使用`say`命令提示你
+`ls`命令用来列出目标目录中所有的子目录和文件。注意参数的大小写
 
 ```bash
-# 朗读文字
-say hello
+# 列出当前目录下非隐藏的文件和目录，等价于“ls -C（注意：大写）”
+ls
 
-# 更改朗读的人物
-# 可以使用“say -v ?”查看，都有哪些人物
-say -v Diego
+# 列出目录下的所有文件，包括以“.”开头的隐含文件
+ls -a
+ls -all
 
-# 朗读一个文件
-say -f empty.txt
+# 与上面的“ls -a”命令几乎相同，只不过是此命令不显示“.（当前目录）”和“..（父级目录）”这两个
+ls -A
 
-# 朗读的语音保存成一个音频文件
-say -o new.mp3 -f empty.txt
+# 列出当前目录下非隐藏的文件和目录，并用逗号“,”分割
+ls -m
+
+# 列出当前目录下所有的文件或目录详细信息
+ls -l
+
+# 列出指定文件的详细信息
+ls -l empty
+
+# 用文件或目录修改的时间进行排序
+ls -t
+
+# 递归显示文件，会把此根目录下的所有文件都显示出来
+ls -R
 ```
 
-### shutdown
+#### tree 
+
+`tree`命令以树状图列出文件目录结构，需要单独安装
+
+```bash
+# 使用 brew 安装 tree
+brew install tree
+
+# 显示指定层级的目录
+tree -L 2
+
+# 列出权限标示
+tree -p
+```
+
+#### cd 
+
+`cd`命令用来切换工作目录
+
+```bash
+# 进入用户根目录
+cd
+# 或
+cd ~
+
+# 进入系统根目录
+cd /
+
+# 回到上次所在目录
+cd -
+
+# 回到上一级目录
+cd ..
+
+# 进入到指定目录下，例如：.Trash「回收站」
+cd ~/.Trash
+
+# 前往其他卷
+cd /Volumes/
+
+# 利用bash 的 $_ 变量，创建一个目录并立即进入该目录
+# $_ 代表前一个命令的最后一个参数的值，如果没有参数的话，就是命令本身的名字
+mkdir directory && cd $_
+```
+
+#### pwd 
+
+`pwd`命令以绝对路径的方式显示用户当前所在的工作目录位置
+
+```bash
+pwd
+```
+
+### 磁盘管理
+
+#### du 
+
+`du`命令显示每个文件和目录的磁盘使用空间
+
+```bash
+# 显示当前目录及其当前目录下所有子目录的大小(以byte为单位)
+du 
+
+# 显示指定文件及其目录的大小
+du "empty"
+
+# 显示多个文件及其目录的大小
+du "empty" "emptyTwo"
+
+# 只显示总和，只列出最后加总的值
+du -s
+# 或
+du -s directory
+
+# 以K，M，G为单位，提高信息的可读性
+du -h "empty"
+```
+
+### 进程相关操作
+
+#### ps
+
+`ps`命令用来查看系统进程
+
+```bash
+# 查看当前用户下的所有进程
+ps -A
+
+# 查看所有进程（包含其他用户，相当于系统下的所有进程）
+ps -e
+```
+
+#### kill
+
+`kill`命令用来终结进程
+
+```bash
+# kill 9 强制终止进程
+kill 9 40142
+```
+
+### 安全相关操作
+
+#### passwd
+
+`passwd`修改登录密码，命令输入完成后回车要求分别输入旧的登陆密码和新的登陆密码，都输入完成后，回车即可更改
+
+### 系统关机和重启
+
+#### caffeinate
+
+`caffeinate`命令用来修改屏幕睡眠时间的
+
+```bash
+# 3600 是秒数，可以使 Mac 一小时不进入睡眠状态
+caffeinate -t 3600
+
+# 打开 terminal 时，直接输入 caffeinate 命令并回车后
+# 当你最小化或隐藏它时，Mac 将会始终保持清醒
+# 除非你 Ctrl + C  关闭，Mac 才会进入正常的休眠状态
+
+# 你也可以使用 caffeinate 命令，指定某个程序，例如：
+caffeinate /Applications/Notes.app
+
+# -i : 防止系统闲置时进入睡眠状态
+# -d : 防止显示器进入睡眠状态
+# -m : 防止磁盘空闲时进入睡眠状态
+# -s : 电脑在插入电源时，始终保持清醒
+```
+
+#### shutdown
 
 `shutdown`命令是用来关机、重启或休眠系统的
 
@@ -648,122 +857,9 @@ sudo reboot
 # sudo kill 80246
 ```
 
-### passwd
 
-`passwd`修改登录密码，命令输入完成后回车要求分别输入旧的登陆密码和新的登陆密码，都输入完成后，回车即可更改
-
-### which
-
-`which`命令用来查看某个命令所在的位置
-
-```bash
-which ls
-```
-
-### who
-
-`who`命令用列出当前登陆的所有用户
-
-### whoami
-
-`whoami`命令用显示当前正进行操作的用户名
-
-### alias
-
-`alias`命令用来定义命令别名
-
-```bash
-# 定义一个列出目录树的命令
-alias Tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-
-# 删除定义的命令
-unalias Tree
-
-# 打印已经设置的命令别名
-alias
-# 或
-alias -p
-```
-
-### caffeinate
-
-`caffeinate`命令用来修改屏幕睡眠时间的
-
-```bash
-# 3600 是秒数，可以使 Mac 一小时不进入睡眠状态
-caffeinate -t 3600
-
-# 打开 terminal 时，直接输入 caffeinate 命令并回车后
-# 当你最小化或隐藏它时，Mac 将会始终保持清醒
-# 除非你 Ctrl + C  关闭，Mac 才会进入正常的休眠状态
-
-# 你也可以使用 caffeinate 命令，指定某个程序，例如：
-caffeinate /Applications/Notes.app
-
-# -i : 防止系统闲置时进入睡眠状态
-# -d : 防止显示器进入睡眠状态
-# -m : 防止磁盘空闲时进入睡眠状态
-# -s : 电脑在插入电源时，始终保持清醒
-```
-
-### ps
-
-`ps`命令用来查看系统进程
-
-```bash
-# 查看当前用户下的所有进程
-ps -A
-
-# 查看所有进程（包含其他用户，相当于系统下的所有进程）
-ps -e
-```
-
-### du 
-
-`du`命令显示每个文件和目录的磁盘使用空间
-
-```bash
-# 显示当前目录及其当前目录下所有子目录的大小(以byte为单位)
-du 
-
-# 显示指定文件及其目录的大小
-du empty.txt
-
-# 显示多个文件及其目录的大小
-du empty.txt emptyTwo.txt
-
-# 只显示总和，只列出最后加总的值
-du -s
-# 或
-du -s directory
-
-# 以K，M，G为单位，提高信息的可读性
-du -h empty.txt
-```
-
-### cal 
-
-显示日历
-
-```bash
-# 显示当月日历
-cal
-
-# 显示2014年9月份的日历
-cal 9 2014
-```
-
-### date
-
-显示系统的当前日期和时间
-
-```
-date
-```
-
-
-## 系统配置 
-
+系统配置 
+----
 ### 获取权限 
 
 为了防止误操作破坏系统，在用户状态下是没有权限操作系统重要文件的，所以先要取得root权限，然后输入密码，输入密码时没有任何回显，连星号都没有，只管输完回车就行了
@@ -897,7 +993,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 killall Finder
 ```
 
-###更改 Finder 每次打开时默认显示的目录 
+### 更改 Finder 每次打开时默认显示的目录 
 
 首先打开 Finder ，然后点击屏幕上面的菜单栏，依次点击“Finder” => “偏好设置” => “通用”，然后在「开启新 Finder 窗口时打开:」项下选择你喜欢的目录即可
 
@@ -976,8 +1072,8 @@ sudo rm -rf ~/Library/Caches/*
 ```
 
 
-## 其它的系统故障及其常见问题 
-
+其它的系统故障及其常见疑问
+----
 ### 强制退出程序 
 
 1.调出“强制退出”窗口方式退出应用
@@ -1106,7 +1202,6 @@ killall Finder
 
 如果想还原，只需要把文件名重新命名成`AliasBadgeIcon.icns`即可
 
-
 ### 快速建立 www 服务
 
 在 Terminal 中进入要分享的文件目录下，执行如下命令，可快速建立 www 服务，可以迅速分享文件给同事，关闭服务的话，只需要关闭终端即可
@@ -1122,7 +1217,6 @@ python -m SimpleHTTPServer 8000
 python3 -m http.server 8000
 ```
 
-
 ### hosts文件的位置
 
 如需Google等最新服务器地址的请移步到https://github.com/googlehosts/hosts
@@ -1136,7 +1230,6 @@ python3 -m http.server 8000
 192.168.1.11  www.qinlzhu.com
 ```
 
-
 ### 终端下出现bogon的解决办法
 
 ```bash
@@ -1149,13 +1242,11 @@ sudo scutil --set LocalHostName $(hostname)
 sudo scutil --set HostName $(hostname)
 ```
 
-
 ### 剪切文件或文件夹
 
 1、复制需要剪切的文件/文件夹（右键`拷贝`或快捷键`command` + `c`），然后在需要粘贴的位置按住`option`键右击，会出现`将项目移到这里`的选项，点击它就会把刚才的项目剪切到此处
 
 2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
-
 
 ### 根目录下有关bash相关的文件
 
@@ -1181,7 +1272,6 @@ ls -l /bin/*sh
 
 在 Linux 下，当用户登录到一个图形界面，然后打开一个终端 Terminal，那些 Shell 是 non-login shell。然而，在 OS X 登录的时候，并没有运行着一个 Shell，所以，在运行 Terminal 的时候，其实是一个 login shell，所以它就没有`.bashrc`文件
 
-
 ### 根目录下的CFUserTextEncoding文件
 
 `~/.CFUserTextEncoding`存储用户的默认文本编码和首选语言的文件
@@ -1193,7 +1283,6 @@ http://www.kbase101.com/question/38628.html
 # Mac OS X 参考库技术说明2228
 https://developer.apple.com/library/archive/technotes/tn2228/_index.html
 ```
-
 
 ### 容器中的其他卷宗的问题
 
