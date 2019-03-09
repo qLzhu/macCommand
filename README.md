@@ -60,7 +60,6 @@ MacOS终端命令
     - [显示文件路径](#显示文件路径)
     - [更改 Finder 每次打开时默认显示的目录](#更改-finder-每次打开时默认显示的目录)
     - [不显示最近使用的项目](#不显示最近使用的项目)
-    - [隐藏桌面所有内容](#隐藏桌面所有内容)
     - [截图](#截图)
     - [禁止生成 DS_Store 文件](#禁止生成-ds_store-文件)
     - [安全清空垃圾桶](#安全清空垃圾桶)
@@ -905,18 +904,6 @@ killall Finder
 ### 不显示最近使用的项目
 
 如果你不想显示Finder、Quick Time Player、Sublime Text等等最近使用的项目记录的话，点击“系统偏好设置” => “通用” => “最近使用的项目” => “n 个文稿、应用和服务器”，把数字改成 0 就可以了
-
-### 隐藏桌面所有内容
-
-```bash
-# 隐藏
-defaults write com.apple.finder CreateDesktop -bool FALSE
-killall Finder
-
-# 恢复
-defaults write com.apple.finder CreateDesktop -bool true
-killall Finder
-```
 
 ### 截图 
 
