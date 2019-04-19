@@ -1,7 +1,9 @@
 MacOS终端命令
 ================
 
-在 Terminal(终端) 中使用命令执行一定的任务可以帮助我们减去很多繁琐的操作，提高我们的工作效率。我们与计算机进行交互主要用到的是 [Shell](https://zh.wikipedia.org/wiki/%E6%AE%BC%E5%B1%A4) 脚本语言，光会写 Shell 还不行，这里我们还需要有个 Shell 脚本解释器才可以。MacOS 为我们内置了很多 Shell 脚本解释器，你可以打开终端执行一下`cat /etc/shells`命令查看系统都内置了那些解释器。MacOS 默认使用的是 [bash](https://zh.wikipedia.org/wiki/Bash) 登录式脚本解释器，也可以使用命令打印一下当前Shell的执行环境看看`echo $SHELL`
+在终端（Terminal）中使用命令执行一定的任务可以帮助我们减去很多繁琐的操作，提高我们的工作效率。命令行（command line），也称为`CLI`，我们中有很多人一看见黑窗口就很怕使用它，但其实只要你知道一些基本的命令和概念，就没什么好怕的了
+
+我们与计算机进行交互主要用到的是 [Shell](https://zh.wikipedia.org/wiki/%E6%AE%BC%E5%B1%A4) 脚本语言，光使用 Shell 还不行，我们还需要有个 Shell 脚本解释器才可以正常的与计算机进行交互。MacOS 为我们内置了很多 Shell 脚本解释器，你可以打开终端执行一下`cat /etc/shells`命令查看系统都内置了那些解释器。MacOS 默认使用的是 [bash](https://zh.wikipedia.org/wiki/Bash) 登录式脚本解释器，也可以使用命令打印一下当前Shell的执行环境看看`echo $SHELL`
 
 **系统环境及其工具**
 
@@ -23,7 +25,7 @@ MacOS终端命令
         + [clear](#clear)
         + [man](#man)
         + [say](#say)
-        + [!!](#!!)
+        + [!!](#above)
         + [type](#type)
         + [which](#which)
         + [alias](#alias)
@@ -57,9 +59,9 @@ MacOS终端命令
     - [进程相关操作](#进程相关操作)
         + [ps](#ps)
     - [安全相关操作](#安全相关操作)
-        + [chmod](#修改权限)
-        + [chown](#修改文件拥有者)
-        + [chgrp](#修改文件所属组)
+        + [chmod](#chmod)
+        + [chown](#chown)
+        + [chgrp](#chgrp)
         + [passwd](#passwd)
     - [系统关机和重启](#系统关机和重启)
         + [caffeinate](#caffeinate)
@@ -77,6 +79,7 @@ MacOS终端命令
     - [显示文件的扩展名](#显示文件的扩展名)
     - [显示文件路径](#显示文件路径)
     - [更改 Finder 每次打开时默认显示的目录](#更改-finder-每次打开时默认显示的目录)
+    - [更改 Finder 默认窗口的显示风格](#更改-Finder-默认窗口的显示风格)
     - [不显示最近使用的项目](#不显示最近使用的项目)
     - [截图](#截图)
     - [禁止生成 DS_Store 文件](#禁止生成-ds_store-文件)
@@ -95,6 +98,7 @@ MacOS终端命令
     - [查看苹果所有的高清图标](#查看苹果所有的高清图标)
     - [去掉副本图标上的箭头](#去掉副本图标上的箭头)
     - [快速建立 www 服务](#快速建立-www-服务)
+    - [ssh 端口转发科学上网](#ssh-端口转发科学上网)
     - [hosts文件的位置](#hosts文件的位置)
     - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
     - [剪切文件或文件夹](#剪切文件或文件夹)
@@ -175,7 +179,7 @@ MacOS终端命令
 * `3 1 19:46`：最后修改的时间是3月1号19:46
 * `empty`：    文件名称
 
-**修改权限**
+**修改权限** <span id="chmod"></span>
 
 如果其他用户想拥有对某个文件的修改权限怎么办？这时我们就需要到修改权限的命令了，命令格式：
 
@@ -220,7 +224,7 @@ ls -l empty
 -rw-rw-r--  1 root  root  0  3  5 11:41 empty
 ```
 
-**修改文件所属组**
+**修改文件所属组** <span id="chgrp"></span>
 
 ```bash
 chgrp [-R(递归修改)] 群组名 文件或目录的名称
@@ -232,7 +236,7 @@ chgrp wheel empty
 chgrp -R wheel directory
 ```
 
-**修改文件拥有者**
+**修改文件拥有者** <span id="chown"></span>
 
 ```bash
 chown [-R] 用户名:群组名 文件或目录的名称
@@ -317,12 +321,24 @@ say -f "empty"
 say -o new.mp3 -f "empty"
 ```
 
-#### !! 
+#### !! <span id="above"><span>
 
 `!!`执行上一条命令
 
 ```bash
 !!
+
+# 执行命令历史列表里第二条命令
+!2
+
+# 执行命令历史列表里倒数第二条命令
+!-2
+
+# 打印命令历史列表里倒数第二条命令,不执行
+!-2:p
+
+# 执行含有ls字符串的最新命令
+!?ls?
 ```
 
 #### type
@@ -1002,6 +1018,23 @@ killall Finder
 
 首先打开 Finder ，然后点击屏幕上面的菜单栏，依次点击“Finder” => “偏好设置” => “通用”，然后在「开启新 Finder 窗口时打开:」项下选择你喜欢的目录即可
 
+### 更改 Finder 默认窗口的显示风格
+
+```bash
+# 按照图标方式排列
+defaults write com.apple.Finder FXPreferredViewStyle icnv
+killall Finder
+
+# FXPreferredViewStyle 后的值有以下几种
+#
+# Nlsv：系统默认值，按照列表形式
+# icnv：按照图标形式
+# clmv：按照列视图形式
+# Flwv：按照画廊形式
+#
+# 如果设置后发现在某些目录里显示效果与设置的不一样，删除该目录下的.DS_Store文件即可
+```
+
 ### 不显示最近使用的项目
 
 如果你不想显示Finder、Quick Time Player、Sublime Text等等最近使用的项目记录的话，点击“系统偏好设置” => “通用” => “最近使用的项目” => “n 个文稿、应用和服务器”，把数字改成 0 就可以了
@@ -1224,6 +1257,26 @@ python -m SimpleHTTPServer 8000
 # python3
 python3 -m http.server 8000
 ```
+
+### ssh 端口转发科学上网
+
+ssh 端口转发的方式也称之为FQ方法，使用该方法的前提是你的有一台境外的VPS主机
+
+第一步在本机建立一个端口通道
+```bash
+ssh -D 7000 vpsuser@vpshost
+
+# 7000 是你要使用的端口可以任意修改
+# vpsuser 是VPS上的账户
+# vpshost 是VPS主机地址
+```
+
+最后找到 “系统偏好设置” => “网络” => “高级” => “代理” => “Socks代理” 勾选上，输入：
+```bash
+localhost ：7000
+```
+
+确认即可FQ啦
 
 ### hosts文件的位置
 
