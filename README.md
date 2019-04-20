@@ -73,6 +73,7 @@ MacOS终端命令
     - [开启Terminal自动补全功能](#开启terminal自动补全功能)
     - [使用Touch ID进行sudo身份验证](#使用touch-id进行sudo身份验证)
     - [更改系统语言](#更改系统语言)
+    - [本地化目录](#本地化目录)
     - [修改终端电脑名称](#修改终端电脑名称)
     - [终端开启允许安装任何来源App](#终端开启允许安装任何来源app)
     - [显示或隐藏文件](#显示或隐藏文件)
@@ -940,6 +941,53 @@ auth       sufficient     pam_tid.so
 ### 更改系统语言 
 
 输入 `sudo languagesetup` 回车后输入开机密码，然后输入选项前面的数字，回车后重启你的 Mac，系统就会加载刚刚设置的系统语言，当系统启动完毕后，你就可以看到系统使用的是你熟悉的语言了
+
+### 本地化目录
+
+当我们设置系统语言是中文时，Finder 内很多目录名称会本地化显示中文，在 Terminal 下其实还是英文名称。经常使用终端操作的可能会注意到这样一个细节，我们在 Finder 内创建一个中文目录后在 Terminal 下使用`cd`进目录的时候总是要不停的切换输入法，这样非常繁琐！
+
+其实 MacOS 系统本身内建了多语言结构，可以到`/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj`下查看`SystemFolderLocalizations.strings`文件，该文件是二进制文件，查看时需要提前转换成我们能看懂的格式
+
+```bash
+cd /System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/
+
+# plutil -convert 指定要转换的格式
+sudo plutil -convert json SystemFolderLocalizations.strings
+
+# 查看后再转换回去
+sudo plutil -convert binary1 SystemFolderLocalizations.strings
+```
+
+转换 JSON 格式后的文件
+
+```json
+{
+    "Library":"资源库",
+    "Movies":"影片",
+    ... ...
+    "My Applications":"我的应用程序",
+    "Compositions":"Compositions",
+    "Documents":"文稿",
+    "Downloads":"下载"
+}
+```
+
+例如：我们要汉化 Virtial Machines 目录的话，只需在其中添加如下一行即可：
+
+```json
+"Virtual Machines":"虚拟机"
+```
+
+随后保存再把该文件转换成二进制文件，再回到 Virtual Machines 目录，在该目录下创建一个空白文件`.localized`，告诉 Finder 该目录是 localizing 目录
+
+最后`killall Finder`即可生效，不过不建议大家这么做！
+
+我们可以直接在访达内新建一个 Virtial Machines 目录，并给该目录添加一个`.localized`后缀，然后再在此目录内新建一个`.localized`目录，并在此目录下新建一个`zh_CN.strings`文件，添加`"Virtual Machines" = "虚拟机";`内容,这样保存后 Virtial Machines 就会显示成虚拟机，不过以后要进到该目录需要在终端下敲写`Virtial\ Machines.localized`带后缀的全称而已，不影响使用
+
+```bash
+mkdir -p Virtial\ Machines.localized/.localized && cd $_
+vim zh_CN.strings # 添加 "Virtual Machines" = "虚拟机"; 然后保存退出
+```
 
 ### 修改终端电脑名称
 
