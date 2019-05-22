@@ -66,10 +66,10 @@ MacOS终端命令
     - [系统关机和重启](#系统关机和重启)
         + [caffeinate](#caffeinate)
         + [shutdown](#shutdown)
-* [系统配置](#系统配置)
-    - [获取权限](#获取权限)
+* [系统相关文件及其配置](#系统相关文件及其配置)
+    - [获取root权限](#获取root权限)
     - [添加环境变量](#添加环境变量)
-    - [随机生成一个MAC地址](#随机生成一个mac地址)
+    - [随机生成MAC地址](#随机生成mac地址)
     - [开启Terminal自动补全功能](#开启terminal自动补全功能)
     - [使用Touch ID进行sudo身份验证](#使用touch-id进行sudo身份验证)
     - [更改系统语言](#更改系统语言)
@@ -77,15 +77,20 @@ MacOS终端命令
     - [修改终端电脑名称](#修改终端电脑名称)
     - [终端开启允许安装任何来源App](#终端开启允许安装任何来源app)
     - [显示或隐藏文件](#显示或隐藏文件)
+    - [查看苹果所有的高清图标](#查看苹果所有的高清图标)
     - [显示文件的扩展名](#显示文件的扩展名)
     - [显示文件路径](#显示文件路径)
+    - [hosts文件的位置](#hosts文件的位置)
     - [更改 Finder 每次打开时默认显示的目录](#更改-finder-每次打开时默认显示的目录)
     - [更改 Finder 默认窗口的显示风格](#更改-Finder-默认窗口的显示风格)
     - [不显示最近使用的项目](#不显示最近使用的项目)
     - [截图](#截图)
     - [禁止生成 DS_Store 文件](#禁止生成-ds_store-文件)
-    - [安全清空垃圾桶](#安全清空垃圾桶)
-    - [清理系统](#清理系统)
+    - [bash相关的文件](#bash相关的文件)
+    - [CFUserTextEncoding文件](#CFUserTextEncoding文件)
+    - [容器中的其他卷宗](#容器中的其他卷宗)
+    - [重置NVRAM或PRAM](#重置nvram或pram)
+    - [重置SMC](#重置smc)
 * [其它的系统故障及其常见疑问](#其它的系统故障及其常见疑问)
     - [强制退出程序](#强制退出程序)
     - [账户管理权限丢失](#账户管理权限丢失)
@@ -96,17 +101,15 @@ MacOS终端命令
     - [调出 emoji 表情](#调出-emoji-表情)
     - [查看本地IP地址](#查看本地ip地址)
     - [查看目录或磁盘占用空间](#查看目录或磁盘占用空间)
-    - [查看苹果所有的高清图标](#查看苹果所有的高清图标)
     - [去掉副本图标上的箭头](#去掉副本图标上的箭头)
     - [快速建立 www 服务](#快速建立-www-服务)
     - [ssh 端口转发科学上网](#ssh-端口转发科学上网)
-    - [hosts文件的位置](#hosts文件的位置)
     - [终端下出现bogon的解决办法](#终端下出现bogon的解决办法)
     - [剪切文件或文件夹](#剪切文件或文件夹)
-    - [根目录下有关bash相关的文件](#根目录下有关bash相关的文件)
-    - [根目录下的CFUserTextEncoding文件](#根目录下的CFUserTextEncoding文件)
-    - [容器中的其他卷宗的问题](#容器中的其他卷宗的问题)
+    - [安全清空垃圾桶](#安全清空垃圾桶)
+    - [清理系统垃圾](#清理系统垃圾)
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 系统目录
 ----
@@ -142,6 +145,8 @@ MacOS终端命令
 **例如**：我在 Macbook 上插了一个叫 empty 的移动硬盘，并且在电脑的桌面上显示了这个硬盘图标，那么它实际位置在哪呐？其实它在`/Volumes`目录下，你执行下`ls /Volumes/empty`看看是不是移动硬盘里面的内容
 
 还有驱动所在位置`/Systme/Library/Extensions`
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 权限信息 
 
@@ -179,6 +184,8 @@ MacOS终端命令
 * `288`：      文件的大小「单位是byte」
 * `3 1 19:46`：最后修改的时间是3月1号19:46
 * `empty`：    文件名称
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 **修改权限** <span id="chmod"></span>
 
@@ -225,6 +232,8 @@ ls -l empty
 -rw-rw-r--  1 root  root  0  3  5 11:41 empty
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 **修改文件所属组** <span id="chgrp"></span>
 
 ```bash
@@ -236,6 +245,8 @@ chgrp wheel empty
 # 修改目录里所有文件所属组
 chgrp -R wheel directory
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 **修改文件拥有者** <span id="chown"></span>
 
@@ -252,6 +263,7 @@ chown -R qinlzhu directory
 chown qinlzhu:wheel empty
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 终端的基本命令操作
 ---- 
@@ -264,6 +276,8 @@ chown qinlzhu:wheel empty
 ```bash
 clear
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### man 
 
@@ -286,6 +300,8 @@ man cd
 cd --help
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### alias
 
 `alias`命令用来定义命令别名
@@ -302,6 +318,8 @@ alias
 # 或
 alias -p
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### say
 
@@ -321,6 +339,8 @@ say -f "empty"
 # 朗读的语音保存成一个音频文件
 say -o new.mp3 -f "empty"
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### !! <span id="above"><span>
 
@@ -342,6 +362,8 @@ say -o new.mp3 -f "empty"
 !?ls?
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### type
 
 `type`命令用来判断某命令是不是 bash 内置命令，或是来自外部
@@ -360,6 +382,8 @@ type ls
 type sublime
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### which
 
 `which`命令用来查看某个命令所在的位置
@@ -368,13 +392,19 @@ type sublime
 which ls
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### who
 
 `who`命令用列出当前登陆的所有用户
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### whoami
 
 `whoami`命令用显示当前正进行操作的用户名
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### open 
 
@@ -409,6 +439,8 @@ open https://github.com/
 open -a Google\ Chrome https://github.com/
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### history 
 
 `history`命令用于显示指定数目的命令，读取历史命令文件中的目录到历史命令缓冲区和将历史命令缓冲区中的目录写入命令文件
@@ -424,6 +456,8 @@ history 6
 history -c
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 日期时间
 
 #### cal 
@@ -438,6 +472,8 @@ cal
 cal 9 2014
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### date
 
 显示系统的当前日期和时间
@@ -445,6 +481,8 @@ cal 9 2014
 ```
 date
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 文件相关操作
 
@@ -463,6 +501,8 @@ touch -t 20180324192900 empty
 # 加 -mt 选项，修改文件的修改和访问时间
 touch -mt 20160324192900 empty
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### cp 
 
@@ -489,6 +529,9 @@ cp empty newEmpty
 cp empty ~/Downloads/newEmpty
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+
 #### mv 
 
 `mv`命令是用改变文件名或所在目录的位置
@@ -503,6 +546,8 @@ mv empty ~/Downloads/empty
 # 先给文件或目录重新命名，然后再移动到指定位置
 mv empty ~/Downloads/newEmpty
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### rm 
 
@@ -528,6 +573,8 @@ rm -r empty
 rm -v empty
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### cat 
 
 `cat`命令用来显示文件的内容
@@ -549,6 +596,8 @@ cat -s "empty"
 cat A B > C
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### more
 
 `more`命令是一个基于vi编辑器文本过滤器，它以全屏幕的方式按页显示文本文件的内容，支持vi中的关键字定位操作
@@ -565,6 +614,8 @@ more +20 "empty"
 more -s "empty"
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### head
 
 `head`命令从头部开始显示指定文件的内容
@@ -577,6 +628,8 @@ head 10 "empty"
 head -c 10 "empty"
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### tail
 
 `tail`命令从尾部开始显示指定文件的内容
@@ -588,6 +641,8 @@ tail 10 "empty"
 # 显示文件最后的 10 个字符（注意：一个中文占两个字符）
 tail -c 10 "empty"
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### nl 
 
@@ -621,6 +676,8 @@ nl -w 5 "empty"
 nl -b t "empty" > new.txt
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### wc
 
 `wc`命令是用来统计文件的字符数、词数和行数
@@ -640,6 +697,8 @@ wc -m "empty"
 # 只统计字数
 wc -w "empty"
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 目录相关操作
 
@@ -662,6 +721,8 @@ mkdir emptyA emptyA ~/Downloads/emptyC
 mkdir emptyA emptyB/{emptyB-A, emptyB-B, emptyB-C}
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### rmdir 
 
 `rmdir`命令是用来删除空白文件目录
@@ -677,6 +738,8 @@ rmdir ~/Downloads/empty
 # 删除多个目录
 rmdir emptyA emptyB
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### ls 
 
@@ -709,6 +772,8 @@ ls -t
 ls -R
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### tree 
 
 `tree`命令以树状图列出文件目录结构，需要单独安装
@@ -723,6 +788,8 @@ tree -L 2
 # 列出权限标示
 tree -p
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### cd 
 
@@ -754,6 +821,8 @@ cd /Volumes/
 mkdir directory && cd $_
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### pwd 
 
 `pwd`命令以绝对路径的方式显示用户当前所在的工作目录位置
@@ -761,6 +830,8 @@ mkdir directory && cd $_
 ```bash
 pwd
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 磁盘管理
 
@@ -787,6 +858,8 @@ du -s directory
 du -h "empty"
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 进程相关操作
 
 #### ps
@@ -801,6 +874,8 @@ ps -A
 ps -e
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 #### kill
 
 `kill`命令用来终结进程
@@ -810,11 +885,15 @@ ps -e
 kill 9 40142
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 安全相关操作
 
 #### passwd
 
 `passwd`修改登录密码，命令输入完成后回车要求分别输入旧的登陆密码和新的登陆密码，都输入完成后，回车即可更改
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 系统关机和重启
 
@@ -838,6 +917,8 @@ caffeinate /Applications/Notes.app
 # -m : 防止磁盘空闲时进入睡眠状态
 # -s : 电脑在插入电源时，始终保持清醒
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 #### shutdown
 
@@ -879,16 +960,20 @@ sudo reboot
 # sudo kill 80246
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
-系统配置 
+
+系统相关文件及其配置 
 ----
-### 获取权限 
+### 获取root权限 
 
-为了防止误操作破坏系统，在用户状态下是没有权限操作系统重要文件的，所以先要取得root权限，然后输入密码，输入密码时没有任何回显，连星号都没有，只管输完回车就行了
+为了防止误操作而人为因素破坏电脑系统，在终端下执行跟系统有关的操作时，需要先获得root权限
 
 ```bash
 sudo ls -a
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 添加环境变量
 
@@ -898,7 +983,9 @@ echo "export PATH=xxxxxx:$PATH" >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-### 随机生成一个MAC地址
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 随机生成MAC地址
 
 按住`option`键点击屏幕上方的“无线”图标，查看下 MAC 地址是多少，然后打开 Terminal 终端输入`ifconfig`，找到你 MAC 地址对应的参数，例如：我的是在`en0`下的`ether`里
 
@@ -907,6 +994,8 @@ source ~/.bash_profile
 # 系统重启恢复到原本的地址
 sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 开启Terminal自动补全功能
 
@@ -921,6 +1010,8 @@ vim ~/.inputrc
 ```
 set completion-ignore-case on set show-all-if-ambiguous on TAB: menu-complete
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 使用Touch ID进行sudo身份验证
 
@@ -938,9 +1029,13 @@ auth       sufficient     pam_tid.so
 
 如果想还原的话，再打开此文件删除此字符串即可
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 更改系统语言 
 
 输入 `sudo languagesetup` 回车后输入开机密码，然后输入选项前面的数字，回车后重启你的 Mac，系统就会加载刚刚设置的系统语言，当系统启动完毕后，你就可以看到系统使用的是你熟悉的语言了
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 本地化目录
 
@@ -989,6 +1084,8 @@ mkdir -p Virtial\ Machines.localized/.localized && cd $_
 vim zh_CN.strings # 添加 "Virtual Machines" = "虚拟机"; 然后保存退出
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 修改终端电脑名称
 
 ```bash
@@ -998,6 +1095,8 @@ HostName
 # 修改终端电脑名称
 sudo scutil --set HostName name
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 终端开启允许安装任何来源App 
 
@@ -1010,6 +1109,8 @@ sudo spctl --master-disable
 # 关闭
 sudo spctl --master-enable
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 显示或隐藏文件 
 
@@ -1047,9 +1148,23 @@ defaults write com.apple.finder AppleShowAllFiles  NO
 killall Finder
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 查看苹果所有的高清图标
+
+如果你想观摹或临摹一下设计精良的苹果产品icon的话，只需打开Finder，然后同时按住`Command+Shift+G`即可打开 “前往文件夹”的弹出窗口，然后输入以下路径
+
+```bash
+/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 显示文件的扩展名
 
 首先打开 Finder ，然后点击菜单栏中的“Finder” => “偏好设置” => “高级” => “高级”，然后在「显示所有文件扩展名」前面打勾即可
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 显示文件路径 
 
@@ -1062,9 +1177,28 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 killall Finder
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### hosts文件的位置
+
+如需Google等最新服务器地址的请移步到https://github.com/googlehosts/hosts
+
+```bash
+# hosts文件位置
+/etc/hosts
+
+# 修改 hosts 文件时需要注意的
+# IP 和 域名之间需要两个空格，否则不会生效，格式如下：
+192.168.1.11  www.qinlzhu.com
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 更改 Finder 每次打开时默认显示的目录 
 
 首先打开 Finder ，然后点击屏幕上面的菜单栏，依次点击“Finder” => “偏好设置” => “通用”，然后在「开启新 Finder 窗口时打开:」项下选择你喜欢的目录即可
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 更改 Finder 默认窗口的显示风格
 
@@ -1083,9 +1217,13 @@ killall Finder
 # 如果设置后发现在某些目录里显示效果与设置的不一样，删除该目录下的.DS_Store文件即可
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 不显示最近使用的项目
 
 如果你不想显示Finder、Quick Time Player、Sublime Text等等最近使用的项目记录的话，点击“系统偏好设置” => “通用” => “最近使用的项目” => “n 个文稿、应用和服务器”，把数字改成 0 就可以了
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 ### 截图 
 
@@ -1118,6 +1256,8 @@ killall SystemUIServer
 screencapture -T 3 empty.jpg
 ```
 
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
 ### 禁止生成 DS_Store 文件
 
 `.DS_Store` 是 macOS 保存文件夹的自定义属性的隐藏文件，如文件的图标位置或背景色，相当于 Windows 的 `desktop.ini`
@@ -1130,234 +1270,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE2
 defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 ```
 
-### 安全清空垃圾桶
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
-```bash
-sudo rm -rfv ~/.Trash /Volumes/*/.Trashes
-```
-
-### 清理系统
-
-```bash
-# 清除旧的日志文件，临时和垃圾文件
-sudo periodic daily
-
-# Daily脚本清除了旧的日志文件，临时和垃圾文件
-# Weely脚本重建locate和whatis数据库
-# monthly汇集了每个用户的使用信息并且备份
-sudo periodic daily weekly monthly
-
-# 默认运行过程是没有任何反馈的，如果你想看到执行的结果，以执行这个命令
-ls -al /var/log/*.out
-
-# 清除QuickLook缓存文件
-sudo rm -rf /private/var/folders/
-
-# 清除缓存文件（注意此操作会清除浏览器的收藏夹、插件和数据等）
-sudo rm -rf ~/Library/Caches/*
-```
-
-
-其它的系统故障及其常见疑问
-----
-### 强制退出程序 
-
-1.调出“强制退出”窗口方式退出应用
-
-依次点击 “” => “强制退出” => “选择要强制退出的程序” => “强制退出”，快捷键`command + option + esc`
-
-2.直接强制退出应用的方式
-
-在要退出的应用界面同时按`command + option + shift + esc`
-
-### 账户管理权限丢失 
-
-有次点击“系统偏好设置” => “用户与群组” => “🔒”输入密码的时候，怎么输都不对！后来去“用户与群组”里面看了下，一看登陆账户变成普通用户了，立马就去网上查了下，但是搜了很多资料也没能解决，最后实在没办法致电了苹果客服，在她们的帮助下才得以解决此问题，在此贴下
-
-首先在重启电脑的时候按住`command + s`键，当出现命令行终端的时候按照以下顺序输入命令「就是那个黑色的全是一行行很小很小的代码界面，注意空格和大小写不要写错了」
-
-```bash
-mount -uw /
-
-rm /var/db/.AppleSetupDone
-
-reboot
-```
-
-回车后你就可以像刚买来电脑的时候，再次注册下管理账号就可以了，然后从刚注册的账号登进去给丢失管理员权限的账号设置下权限就 OK 了，回来你也可以登陆旧的账号把新的账号给删了，当然新的账号不删保留着也没啥事
-
-**注意**：如果你想把旧的账号给删了的话，需要提前备份下旧账号的资料
-
-### 重置被遗忘的管理员密码
-
-如果你忘记了登陆密码，可以使用此方式更改管理员密码。首先，在系统开机还未进入登录界面时按下`command+S`进入单用户模式。然后输入
-
-```bash
-mount -rw /
-```
-
-以读写方式挂载文件系统；接着重置管理员 json 的密码，回车后会要求你输入新的密码
-
-```bash
-passwd json
-```
-
-完成后，输入命令重启
-
-```bash
-reboot
-```
-
-### 前往资源库
-
-* 打开 Finder 文件夹，点击右上角的菜单栏"前往"选项，然后按住`option`键的同时即可出现资源库选项
-* 在终端输入`open ~/libray`
-
-### 输入苹果图标
-
-在需要输入的地方同时按`shift + option + k`键
-
-### 输入或查询偏僻字
-
-例如：想查询“龘”这个字怎么读
-
-1.首先先看下这个字的组成部分，它是由三个龙组成，使用 MAC 自带的输入法，打出三个`龙龙龙 longlonglong`，然后按`shift + 空格键` 你就会看到这个字了，同时旁边也会有它的发音
-
-2.`shift + control + 空格键`调出鼠绘面板，写出你要查询或者输入的字
-
-### 调出 emoji 表情
-
-在需要输入的地方同时按`control + command + space(空格)`键
-
-### 查看本地IP地址
-
-* 按住`option`键，然后再点击屏幕上方的“无线图标”即可显示
-* 点击“系统偏好设置” => “网络”后，在右侧的状态中即可看到
-* [`ifconfig`](https://blog.edentsai.net/2015-11-22-how-to-use-ifconfig-on-max-osx/)命令
-```bash
-# 显示当前网络接口配置信息
-# 在一大串的参数中找到 en0 参数，里面就有你想要的 IP 地址
-ifconfig 
-
-# Centos7+ 查看命令
-ip addr
-
-# 只显示网卡的配置信息，注意 en0 中的 0 不是字母 o 哦
-ifconfig en0
-
-# 更精确的命令
-ipconfig getifaddr en0
-```
-* 输入下方任意一个苹果脚本代码
-```bash
-// 显示系统的所有信息
-osascript -e "system info" 
-
-// 只显示 IP4
-osascript -e "IPv4 address of (system info)"
-```
-
-### 查看目录或磁盘占用空间
-
-```bash
-# 查看文件或目录的大小
-du -h -d 1 ~/Downloads
-
-# 查看磁盘的占用空间
-df -h
-```
-
-### 查看苹果所有的高清图标
-
-如果你想观摹或临摹一下设计精良的苹果产品icon的话，只需打开Finder，然后同时按住`Command+Shift+G`即可打开 “前往文件夹”的弹出窗口，然后输入以下路径
-
-```bash
-/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
-```
-
-### 去掉副本图标上的箭头
-
-打开Finder，然后同时按住`Command+Shift+G`即可打开 “前往文件夹”的弹出窗口，然后输入以下路径
-
-```bash
-/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
-```
-
-把该目录下的`AliasBadgeIcon.icns`文件更改为`AliasBadgeIcon-no.icns`，然后打开Terminal重启Finder后会立即生效
-
-```bash
-killall Finder
-```
-
-如果想还原，只需要把文件名重新命名成`AliasBadgeIcon.icns`即可
-
-### 快速建立 www 服务
-
-在 Terminal 中进入要分享的文件目录下，执行如下命令，可快速建立 www 服务，可以迅速分享文件给同事，关闭服务的话，只需要关闭终端即可
-
-访问时，只需要输入`http://Your IP4 address:8000`
-
-```python
-# python2
-# 如果你未安装 python3 的话，请执行此命令
-python -m SimpleHTTPServer 8000
-
-# python3
-python3 -m http.server 8000
-```
-
-### ssh 端口转发科学上网
-
-ssh 端口转发的方式也称之为FQ方法，使用该方法的前提是你的有一台境外的VPS主机
-
-第一步在本机建立一个端口通道
-```bash
-ssh -D 7000 vpsuser@vpshost
-
-# 7000 是你要使用的端口可以任意修改
-# vpsuser 是VPS上的账户
-# vpshost 是VPS主机地址
-```
-
-最后找到 “系统偏好设置” => “网络” => “高级” => “代理” => “Socks代理” 勾选上，输入：
-```bash
-localhost ：7000
-```
-
-确认即可FQ啦
-
-### hosts文件的位置
-
-如需Google等最新服务器地址的请移步到https://github.com/googlehosts/hosts
-
-```bash
-# hosts文件位置
-/etc/hosts
-
-# 修改 hosts 文件时需要注意的
-# IP 和 域名之间需要两个空格，否则不会生效，格式如下：
-192.168.1.11  www.qinlzhu.com
-```
-
-### 终端下出现bogon的解决办法
-
-```bash
-# 1.将DNS设置为Google的DNS服务器地址 8.8.8.8
-# 在“系统偏好设置” => “Wi-Fi” => “高级” => “DNS” => “+” 中添加
-
-# 2.终端内修改
-sudo hostname your-desired-host-name
-sudo scutil --set LocalHostName $(hostname)
-sudo scutil --set HostName $(hostname)
-```
-
-### 剪切文件或文件夹
-
-1、复制需要剪切的文件/文件夹（右键`拷贝`或快捷键`command` + `c`），然后在需要粘贴的位置按住`option`键右击，会出现`将项目移到这里`的选项，点击它就会把刚才的项目剪切到此处
-
-2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
-
-### 根目录下有关bash相关的文件
+### bash相关的文件
 
 Mac 下自带了很多解析 Shell 脚本的解释器，例如：bash、zsh等。如果想查看 Mac 都内置了那些 Shell 脚本的解释器，可以输入以下任意一个命令查看
 
@@ -1371,9 +1286,8 @@ ls -l /bin/*sh
 以下是 Mac 下跟 Bash 解析器有关的文件/文件夹
 
 - `.bash_history` 记录了以前执行过的 bash 命令
-- `.bash_profile` Mac 配置环境变量的文件
+- `.bash_profile` Mac 配置环境变量的文件(交互式登陆)
 - `.bash_sessions` 里面包含了每次使用 bash 所做的操作的文件列表（文件夹）
-<!-- `.bashrc` Mac 下无此文件（系统在交互式和非登录式 bash shell 操作时读取执行的环境变量配置文件） -->
 
 **Mac 下为什么没有`.bashrc`文件？**
 
@@ -1381,7 +1295,9 @@ ls -l /bin/*sh
 
 在 Linux 下，当用户登录到一个图形界面，然后打开一个终端 Terminal，那些 Shell 是 non-login shell。然而，在 OS X 登录的时候，并没有运行着一个 Shell，所以，在运行 Terminal 的时候，其实是一个 login shell，所以它就没有`.bashrc`文件
 
-### 根目录下的CFUserTextEncoding文件
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### CFUserTextEncoding文件
 
 `~/.CFUserTextEncoding`存储用户的默认文本编码和首选语言的文件
 
@@ -1393,7 +1309,9 @@ http://www.kbase101.com/question/38628.html
 https://developer.apple.com/library/archive/technotes/tn2228/_index.html
 ```
 
-### 容器中的其他卷宗的问题
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 容器中的其他卷宗
 
 点击``-`关于本机`-`储存空间`，可以看到储存条中有个白色的加斜杠的块，当你把鼠标移上去后，会显示此块是“容器中的其他卷宗”，这是格式升级成APFS后会多出來的东西
 
@@ -1424,6 +1342,263 @@ diskutil list
     3:                APFS Volume Recovery                512.8 MB   disk1s3
     4:                APFS Volume VM                      3.2 GB     disk1s4
 ```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 重置NVRAM或PRAM
+
+如果电脑出现跟内核、时区、分辨率以及磁盘相关的问题时，可以重置NVRAM或PRAM。具体操作是开机时同时按住`command`+`option`+`P`+`R`键10到20秒
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 重置SMC
+
+如果电脑出现了跟电源、电池、键盘背光、状态指示灯及其热能相关的问题时，可以重置SMC。具体操作是关机后同时按住`shift`+`control`+`Option`+`关机键`键10秒，然后松开所有键再开机
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+
+其它的系统故障及其常见疑问
+----
+### 强制退出程序 
+
+1、调出“强制退出”窗口方式退出应用
+
+依次点击 “” => “强制退出” => “选择要强制退出的程序” => “强制退出”，快捷键`command + option + esc`
+
+2、直接强制退出应用的方式
+
+在要退出的应用界面同时按`command + option + shift + esc`
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 账户管理权限丢失 
+
+有次点击“系统偏好设置” => “用户与群组” => “🔒”输入密码的时候，怎么输都不对！后来去“用户与群组”里面看了下，一看登陆账户变成普通用户了，立马就去网上查了下，但是搜了很多资料也没能解决，最后实在没办法致电了苹果客服，在她们的帮助下才得以解决此问题，在此贴下
+
+首先在重启电脑的时候按住`command + s`键，当出现命令行终端的时候按照以下顺序输入命令「就是那个黑色的全是一行行很小很小的代码界面，注意空格和大小写不要写错了」
+
+```bash
+mount -uw /
+
+rm /var/db/.AppleSetupDone
+
+reboot
+```
+
+回车后你就可以像刚买来电脑的时候，再次注册下管理账号就可以了，然后从刚注册的账号登进去给丢失管理员权限的账号设置下权限就 OK 了，回来你也可以登陆旧的账号把新的账号给删了，当然新的账号不删保留着也没啥事
+
+**注意**：如果你想把旧的账号给删了的话，需要提前备份下旧账号的资料
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 重置被遗忘的管理员密码
+
+如果你忘记了登陆密码，可以使用此方式更改管理员密码。首先，在系统开机还未进入登录界面时按下`command+S`进入单用户模式。然后输入
+
+```bash
+mount -rw /
+```
+
+以读写方式挂载文件系统；接着重置管理员 json 的密码，回车后会要求你输入新的密码
+
+```bash
+passwd json
+```
+
+完成后，输入命令重启
+
+```bash
+reboot
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 前往资源库
+
+1、打开Finder文件夹，点击右上角的菜单栏“前往”选项，然后按住`option`键的同时即可出现资源库选项
+
+2、在终端输入`open ~/libray`
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 输入苹果图标
+
+在需要输入的地方同时按`shift + option + k`键
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 输入或查询偏僻字
+
+例如：想查询“龘”这个字怎么读
+
+1、首先先看下这个字的组成部分，它是由三个龙组成，使用MAC自带的输入法，打出三个`龙龙龙 longlonglong`，然后按`shift + 空格键` 你就会看到这个字了，同时旁边也会有它的发音
+
+2、`shift + control + 空格键`调出鼠绘面板，写出你要查询或者输入的字
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 调出 emoji 表情
+
+在需要输入的地方同时按`control + command + space(空格)`键
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 查看本地IP地址
+
+1、按住`option`键，然后再点击屏幕上方的“无线图标”即可显示
+
+2、点击“系统偏好设置” => “网络”后，在右侧的状态中即可看到
+
+3、终端下使用[`ifconfig`](https://blog.edentsai.net/2015-11-22-how-to-use-ifconfig-on-max-osx/)命令
+```bash
+# 显示当前网络接口配置信息
+# 在一大串的参数中找到 en0 参数，里面就有你想要的 IP 地址
+ifconfig 
+
+# Centos7+ 查看命令
+ip addr
+
+# 只显示网卡的配置信息，注意 en0 中的 0 不是字母 o 哦
+ifconfig en0
+
+# 更精确的命令
+ipconfig getifaddr en0
+```
+
+4、终端内输入苹果脚本代码
+
+```bash
+// 显示系统的所有信息
+osascript -e "system info" 
+
+// 只显示 IP4
+osascript -e "IPv4 address of (system info)"
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 查看目录或磁盘占用空间
+
+```bash
+# 查看文件或目录的大小
+du -h -d 1 ~/Downloads
+
+# 查看磁盘的占用空间
+df -h
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 去掉副本图标上的箭头
+
+打开Finder，然后同时按住`Command+Shift+G`即可打开 “前往文件夹”的弹出窗口，然后输入以下路径
+
+```bash
+/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
+```
+
+把该目录下的`AliasBadgeIcon.icns`文件更改为`AliasBadgeIcon-no.icns`，然后打开Terminal重启Finder后会立即生效
+
+```bash
+killall Finder
+```
+
+如果想还原，只需要把文件名重新命名成`AliasBadgeIcon.icns`即可
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 快速建立 www 服务
+
+在 Terminal 中进入要分享的文件目录下，执行如下命令，可快速建立 www 服务，可以迅速分享文件给同事，关闭服务的话，只需要关闭终端即可
+
+访问时，只需要输入`http://Your IP4 address:8000`
+
+```python
+# python2
+# 如果你未安装 python3 的话，请执行此命令
+python -m SimpleHTTPServer 8000
+
+# python3
+python3 -m http.server 8000
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### ssh 端口转发科学上网
+
+ssh 端口转发的方式也称之为FQ方法，使用该方法的前提是你的有一台境外的VPS主机
+
+第一步在本机建立一个端口通道
+```bash
+ssh -D 7000 vpsuser@vpshost
+
+# 7000 是你要使用的端口可以任意修改
+# vpsuser 是VPS上的账户
+# vpshost 是VPS主机地址
+```
+
+最后找到 “系统偏好设置” => “网络” => “高级” => “代理” => “Socks代理” 勾选上，输入：
+```bash
+localhost ：7000
+```
+
+确认即可FQ啦
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 终端下出现bogon的解决办法
+
+```bash
+# 1.将DNS设置为Google的DNS服务器地址 8.8.8.8
+# 在“系统偏好设置” => “Wi-Fi” => “高级” => “DNS” => “+” 中添加
+
+# 2.终端内修改
+sudo hostname your-desired-host-name
+sudo scutil --set LocalHostName $(hostname)
+sudo scutil --set HostName $(hostname)
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 剪切文件或文件夹
+
+1、复制需要剪切的文件/文件夹（右键`拷贝`或快捷键`command` + `c`），然后在需要粘贴的位置按住`option`键右击，会出现`将项目移到这里`的选项，点击它就会把刚才的项目剪切到此处
+
+2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 安全清空垃圾桶
+
+```bash
+sudo rm -rfv ~/.Trash /Volumes/*/.Trashes
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 清理系统垃圾
+
+```bash
+# 清除旧的日志文件，临时和垃圾文件
+sudo periodic daily
+
+# Daily脚本清除了旧的日志文件，临时和垃圾文件
+# Weely脚本重建locate和whatis数据库
+# monthly汇集了每个用户的使用信息并且备份
+sudo periodic daily weekly monthly
+
+# 默认运行过程是没有任何反馈的，如果你想看到执行的结果，以执行这个命令
+ls -al /var/log/*.out
+
+# 清除QuickLook缓存文件
+sudo rm -rf /private/var/folders/
+
+# 清除缓存文件（注意此操作会清除浏览器的收藏夹、插件和数据等）
+sudo rm -rf ~/Library/Caches/*
+```
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
 
 
