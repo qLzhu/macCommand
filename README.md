@@ -1,3 +1,10 @@
+<style type="text/css">
+  .scroll-top {
+    margin-bottom: 45px;
+    font-size: 14px;
+  }
+</style>
+
 MacOS终端命令
 ================
 
@@ -110,7 +117,7 @@ MacOS终端命令
     - [安全清空垃圾桶](#安全清空垃圾桶)
     - [清理系统垃圾](#清理系统垃圾)
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 系统目录
 ----
@@ -147,7 +154,7 @@ MacOS终端命令
 
 还有驱动所在位置`/Systme/Library/Extensions`
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 权限信息 
 
@@ -186,7 +193,7 @@ MacOS终端命令
 * `3 1 19:46`：最后修改的时间是3月1号19:46
 * `empty`：    文件名称
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 **修改权限** <span id="chmod"></span>
 
@@ -233,7 +240,7 @@ ls -l empty
 -rw-rw-r--  1 root  root  0  3  5 11:41 empty
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 **修改文件所属组** <span id="chgrp"></span>
 
@@ -247,7 +254,7 @@ chgrp wheel empty
 chgrp -R wheel directory
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 **修改文件拥有者** <span id="chown"></span>
 
@@ -264,7 +271,7 @@ chown -R qinlzhu directory
 chown qinlzhu:wheel empty
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 终端的基本命令操作
 ---- 
@@ -278,7 +285,7 @@ chown qinlzhu:wheel empty
 clear
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### man 
 
@@ -301,7 +308,7 @@ man cd
 cd --help
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### alias
 
@@ -320,7 +327,7 @@ alias
 alias -p
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### say
 
@@ -341,7 +348,7 @@ say -f "empty"
 say -o new.mp3 -f "empty"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### !! <span id="above"><span>
 
@@ -363,7 +370,7 @@ say -o new.mp3 -f "empty"
 !?ls?
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### type
 
@@ -383,30 +390,30 @@ type ls
 type sublime
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### which
 
-`which`命令用来查看某个命令是否存在及其命令所在的位置
+`which`命令用来查看某个命令是否存在及其命令所在的位置  
 说明：`which` 是根据使用者配置的环境变量 `$PATH` 设置的目录里查找符合条件的文件！所以，不同的 `$PATH` 配置所找到的命令位置会有所不同！
 
 ```bash
 which ls
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### who
 
 `who`命令用列出当前登陆的所有用户
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### whoami
 
 `whoami`命令用显示当前正进行操作的用户名
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### open 
 
@@ -441,7 +448,7 @@ open https://github.com/
 open -a Google\ Chrome https://github.com/
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### history 
 
@@ -458,7 +465,7 @@ history 6
 history -c
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 日期时间
 
@@ -474,7 +481,7 @@ cal
 cal 9 2014
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### date
 
@@ -484,7 +491,7 @@ cal 9 2014
 date
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 文件相关操作
 
@@ -504,7 +511,7 @@ touch -t 20180324192900 empty
 touch -mt 20160324192900 empty
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### cp 
 
@@ -531,7 +538,7 @@ cp empty newEmpty
 cp empty ~/Downloads/newEmpty
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 
 #### mv 
@@ -549,7 +556,7 @@ mv empty ~/Downloads/empty
 mv empty ~/Downloads/newEmpty
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### rm 
 
@@ -575,7 +582,7 @@ rm -r empty
 rm -v empty
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### cat 
 
@@ -598,7 +605,7 @@ cat -s "empty"
 cat A B > C
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### more
 
@@ -616,7 +623,7 @@ more +20 "empty"
 more -s "empty"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### head
 
@@ -630,7 +637,7 @@ head 10 "empty"
 head -c 10 "empty"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### tail
 
@@ -644,7 +651,7 @@ tail 10 "empty"
 tail -c 10 "empty"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### nl 
 
@@ -678,7 +685,7 @@ nl -w 5 "empty"
 nl -b t "empty" > new.txt
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### wc
 
@@ -700,7 +707,7 @@ wc -m "empty"
 wc -w "empty"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 目录相关操作
 
@@ -723,7 +730,7 @@ mkdir emptyA emptyA ~/Downloads/emptyC
 mkdir emptyA emptyB/{emptyB-A, emptyB-B, emptyB-C}
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### rmdir 
 
@@ -741,7 +748,7 @@ rmdir ~/Downloads/empty
 rmdir emptyA emptyB
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### ls 
 
@@ -774,7 +781,7 @@ ls -t
 ls -R
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### tree 
 
@@ -791,7 +798,7 @@ tree -L 2
 tree -p
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### cd 
 
@@ -823,7 +830,7 @@ cd /Volumes/
 mkdir directory && cd $_
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### pwd 
 
@@ -833,7 +840,7 @@ mkdir directory && cd $_
 pwd
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 磁盘管理
 
@@ -860,7 +867,7 @@ du -s directory
 du -h "empty"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 进程相关操作
 
@@ -876,7 +883,7 @@ ps -A
 ps -e
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### kill
 
@@ -887,7 +894,7 @@ ps -e
 kill 9 40142
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 安全相关操作
 
@@ -895,7 +902,7 @@ kill 9 40142
 
 `passwd`修改登录密码，命令输入完成后回车要求分别输入旧的登陆密码和新的登陆密码，都输入完成后，回车即可更改
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 系统关机和重启
 
@@ -920,7 +927,7 @@ caffeinate /Applications/Notes.app
 # -s : 电脑在插入电源时，始终保持清醒
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 #### shutdown
 
@@ -962,7 +969,7 @@ sudo reboot
 # sudo kill 80246
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 
 系统相关文件及其配置 
@@ -975,7 +982,7 @@ sudo reboot
 sudo ls -a
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 添加环境变量
 
@@ -985,7 +992,7 @@ echo "export PATH=xxxxxx:$PATH" >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 随机生成MAC地址
 
@@ -997,7 +1004,7 @@ source ~/.bash_profile
 sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 开启Terminal自动补全功能
 
@@ -1013,7 +1020,7 @@ vim ~/.inputrc
 set completion-ignore-case on set show-all-if-ambiguous on TAB: menu-complete
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 使用Touch ID进行sudo身份验证
 
@@ -1031,13 +1038,13 @@ auth       sufficient     pam_tid.so
 
 如果想还原的话，再打开此文件删除此字符串即可
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 更改系统语言 
 
 输入 `sudo languagesetup` 回车后输入开机密码，然后输入选项前面的数字，回车后重启你的 Mac，系统就会加载刚刚设置的系统语言，当系统启动完毕后，你就可以看到系统使用的是你熟悉的语言了
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 本地化目录
 
@@ -1086,7 +1093,7 @@ mkdir -p Virtial\ Machines.localized/.localized && cd $_
 vim zh_CN.strings # 添加 "Virtual Machines" = "虚拟机"; 然后保存退出
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 修改终端电脑名称
 
@@ -1098,7 +1105,7 @@ HostName
 sudo scutil --set HostName name
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 终端开启允许安装任何来源App 
 
@@ -1112,7 +1119,7 @@ sudo spctl --master-disable
 sudo spctl --master-enable
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 显示或隐藏文件 
 
@@ -1150,7 +1157,7 @@ defaults write com.apple.finder AppleShowAllFiles  NO
 killall Finder
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 查看苹果所有的高清图标
 
@@ -1160,13 +1167,13 @@ killall Finder
 /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 显示文件的扩展名
 
 首先打开 Finder ，然后点击菜单栏中的“Finder” => “偏好设置” => “高级” => “高级”，然后在「显示所有文件扩展名」前面打勾即可
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 显示文件路径 
 
@@ -1179,7 +1186,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 killall Finder
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### hosts文件的位置
 
@@ -1194,13 +1201,13 @@ killall Finder
 192.168.1.11  www.qinlzhu.com
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 更改 Finder 每次打开时默认显示的目录 
 
 首先打开 Finder ，然后点击屏幕上面的菜单栏，依次点击“Finder” => “偏好设置” => “通用”，然后在「开启新 Finder 窗口时打开:」项下选择你喜欢的目录即可
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 更改 Finder 默认窗口的显示风格
 
@@ -1219,13 +1226,13 @@ killall Finder
 # 如果设置后发现在某些目录里显示效果与设置的不一样，删除该目录下的.DS_Store文件即可
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 不显示最近使用的项目
 
 如果你不想显示Finder、Quick Time Player、Sublime Text等等最近使用的项目记录的话，点击“系统偏好设置” => “通用” => “最近使用的项目” => “n 个文稿、应用和服务器”，把数字改成 0 就可以了
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 截图 
 
@@ -1258,7 +1265,7 @@ killall SystemUIServer
 screencapture -T 3 empty.jpg
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 禁止生成 DS_Store 文件
 
@@ -1272,7 +1279,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE2
 defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### bash相关的文件
 
@@ -1297,7 +1304,7 @@ ls -l /bin/*sh
 
 在 Linux 下，当用户登录到一个图形界面，然后打开一个终端 Terminal，那些 Shell 是 non-login shell。然而，在 OS X 登录的时候，并没有运行着一个 Shell，所以，在运行 Terminal 的时候，其实是一个 login shell，所以它就没有`.bashrc`文件
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### CFUserTextEncoding文件
 
@@ -1311,7 +1318,7 @@ http://www.kbase101.com/question/38628.html
 https://developer.apple.com/library/archive/technotes/tn2228/_index.html
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 容器中的其他卷宗
 
@@ -1345,19 +1352,19 @@ diskutil list
     4:                APFS Volume VM                      3.2 GB     disk1s4
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 重置NVRAM或PRAM
 
 如果电脑出现跟内核、时区、分辨率以及磁盘相关的问题时，可以重置NVRAM或PRAM。具体操作是开机时同时按住`command`+`option`+`P`+`R`键10到20秒
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 重置SMC
 
 如果电脑出现了跟电源、电池、键盘背光、状态指示灯及其热能相关的问题时，可以重置SMC。具体操作是关机后同时按住`shift`+`control`+`Option`+`关机键`10秒，然后松开所有键再开机
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 
 其它的系统故障及其常见疑问
@@ -1372,13 +1379,13 @@ diskutil list
 
 在要退出的应用界面同时按`command + option + shift + esc`
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 重启访达
 
 右键访达的同时按住`⌥ option`键，在选项内选择“重新开启”
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 账户管理权限丢失 
 
@@ -1398,7 +1405,7 @@ reboot
 
 **注意**：如果你想把旧的账号给删了的话，需要提前备份下旧账号的资料
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 重置被遗忘的管理员密码
 
@@ -1420,7 +1427,7 @@ passwd json
 reboot
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 前往资源库
 
@@ -1428,13 +1435,13 @@ reboot
 
 2、在终端输入`open ~/libray`
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 输入苹果图标
 
 在需要输入的地方同时按`shift + option + k`键
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 输入或查询偏僻字
 
@@ -1444,13 +1451,13 @@ reboot
 
 2、`shift + control + 空格键`调出鼠绘面板，写出你要查询或者输入的字
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 调出 emoji 表情
 
 在需要输入的地方同时按`control + command + space(空格)`键
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 查看本地IP地址
 
@@ -1484,7 +1491,7 @@ osascript -e "system info"
 osascript -e "IPv4 address of (system info)"
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 查看目录或磁盘占用空间
 
@@ -1496,7 +1503,7 @@ du -h -d 1 ~/Downloads
 df -h
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 去掉副本图标上的箭头
 
@@ -1514,7 +1521,7 @@ killall Finder
 
 如果想还原，只需要把文件名重新命名成`AliasBadgeIcon.icns`即可
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 快速建立 www 服务
 
@@ -1531,7 +1538,7 @@ python -m SimpleHTTPServer 8000
 python3 -m http.server 8000
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### ssh 端口转发科学上网
 
@@ -1553,7 +1560,7 @@ localhost ：7000
 
 确认即可FQ啦
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 终端下出现bogon的解决办法
 
@@ -1567,7 +1574,7 @@ sudo scutil --set LocalHostName $(hostname)
 sudo scutil --set HostName $(hostname)
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 剪切文件或文件夹
 
@@ -1575,7 +1582,7 @@ sudo scutil --set HostName $(hostname)
 
 2、快捷键`command` + `c`复制，`command` + `option` + `v`粘贴
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 安全清空垃圾桶
 
@@ -1583,7 +1590,7 @@ sudo scutil --set HostName $(hostname)
 sudo rm -rfv ~/.Trash /Volumes/*/.Trashes
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 ### 清理系统垃圾
 
@@ -1606,7 +1613,7 @@ sudo rm -rf /private/var/folders/
 sudo rm -rf ~/Library/Caches/*
 ```
 
-<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+<p class="scroll-top"><a href="#">⬆回到顶部</a></p>
 
 
 [MacOS]:https://zh.wikipedia.org/wiki/MacOS
