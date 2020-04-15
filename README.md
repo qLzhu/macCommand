@@ -93,6 +93,7 @@ MacOS终端命令
     - [重置SMC](#重置smc)
 * [其它的系统故障及其常见疑问](#其它的系统故障及其常见疑问)
     - [强制退出程序](#强制退出程序)
+    - [重启访达](#重启访达)
     - [账户管理权限丢失](#账户管理权限丢失)
     - [重置被遗忘的管理员密码](#重置被遗忘的管理员密码)
     - [前往资源库](#前往资源库)
@@ -384,9 +385,10 @@ type sublime
 
 <p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
-### which
+#### which
 
-`which`命令用来查看某个命令所在的位置
+`which`命令用来查看某个命令是否存在及其命令所在的位置
+说明：`which` 是根据使用者配置的环境变量 `$PATH` 设置的目录里查找符合条件的文件！所以，不同的 `$PATH` 配置所找到的命令位置会有所不同！
 
 ```bash
 which ls
@@ -1353,7 +1355,7 @@ diskutil list
 
 ### 重置SMC
 
-如果电脑出现了跟电源、电池、键盘背光、状态指示灯及其热能相关的问题时，可以重置SMC。具体操作是关机后同时按住`shift`+`control`+`Option`+`关机键`键10秒，然后松开所有键再开机
+如果电脑出现了跟电源、电池、键盘背光、状态指示灯及其热能相关的问题时，可以重置SMC。具体操作是关机后同时按住`shift`+`control`+`Option`+`关机键`10秒，然后松开所有键再开机
 
 <p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
@@ -1369,6 +1371,12 @@ diskutil list
 2、直接强制退出应用的方式
 
 在要退出的应用界面同时按`command + option + shift + esc`
+
+<p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
+
+### 重启访达
+
+右键访达的同时按住`⌥ option`键，在选项内选择“重新开启”
 
 <p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
 
@@ -1599,7 +1607,6 @@ sudo rm -rf ~/Library/Caches/*
 ```
 
 <p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
-
 
 
 [MacOS]:https://zh.wikipedia.org/wiki/MacOS
