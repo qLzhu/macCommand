@@ -309,15 +309,20 @@ cd --help
 
 ```bash
 # 定义一个列出目录树的命令
-alias Tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # 删除定义的命令
-unalias Tree
+unalias tree
 
 # 打印已经设置的命令别名
 alias
 # 或
 alias -p
+
+# 需要注意的是 alias 是 shell 命令，此时定义的命令别名在终端重启后会失效
+# 长久使用需要写入 ~/.bash_profile 内
+echo "alias tree='find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
 <p style="font-size: 14px;margin-bottom: 25px;"><a href="#">⬆回到顶部</a></p>
